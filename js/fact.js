@@ -1,9 +1,12 @@
 var nf = document.getElementById("nf"); // Factorial
 
+// List untuk turing machine
+var factLine = [];
+
 // After click = button
 function doFact() {
     // Write here...
-
+    factLine.push(new Blockfact("C"));
 }
 
 // Auto move
@@ -27,5 +30,9 @@ function doFactPrev() {
 // Clear TM
 function doFactClear() {
     // Write here...
-
+    var list = document.getElementById("factTm");
+    
+    // Declare list to null and opsLine to null
+    list.innerHTML = "";
+    factLine = [];
 }
