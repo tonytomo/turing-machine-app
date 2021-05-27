@@ -2,6 +2,8 @@ var nf = document.getElementById("nf"); // Factorial
 
 // List untuk turing machine
 var factLine = [];
+// Turing machine
+var factTmLine = document.getElementById("factTm");
 
 // After click = button
 function doFact() {
@@ -30,9 +32,7 @@ function doFactPrev() {
 // Clear TM
 function doFactClear() {
     // Write here...
-    var list = document.getElementById("factTm");
-    
     // Declare list to null and opsLine to null
-    list.innerHTML = "";
+    factTmLine.innerHTML = "";
     factLine = [];
 }

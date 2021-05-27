@@ -4,6 +4,8 @@ var n2 = document.getElementById("n2");     // Number 2
 
 // List untuk turing machine
 var opsLine = [];
+// Turing machine
+var opsTmLine = document.getElementById("opsTm");
 
 // After click = button
 function doOps() {
@@ -14,6 +16,10 @@ function doOps() {
 // Auto move
 function doOpsAuto() {
     // Write here...
+    // also use fun scrollIntoView() to track active block
+    // use childNodes fun to activate by adding active class
+    // use setTimeout with iterations instead of for loop
+    // fun doOpsNext() inside setTimeout
 
 }
 
@@ -32,9 +38,7 @@ function doOpsPrev() {
 // Clear TM
 function doOpsClear() {
     // Write here...
-    var list = document.getElementById("opsTm");
-
     // Declare list to null and opsLine to null
-    list.innerHTML = "";
+    opsTmLine.innerHTML = "";
     opsLine = [];
 }

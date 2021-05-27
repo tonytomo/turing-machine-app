@@ -10,6 +10,11 @@ function Blockops(content) {
 
     var tm = document.getElementById("opsTm");
     tm.appendChild(rect);
+
+    // Change content
+    this.changeTo = function (otherContent) {
+        this.content = otherContent;
+    }
 }
 
 // Komponen Factorial
@@ -24,6 +29,11 @@ function Blockfact(content) {
 
     var tm = document.getElementById("factTm");
     tm.appendChild(rect);
+
+    // Change content
+    this.changeTo = function (otherContent) {
+        this.content = otherContent;
+    }
 }
 
 // Komponen Logaritma
@@ -38,4 +48,9 @@ function Blocklog(content) {
 
     var tm = document.getElementById("logTm");
     tm.appendChild(rect);
+
+    // Change content
+    this.changeTo = function (otherContent) {
+        this.content = otherContent;
+    }
 }

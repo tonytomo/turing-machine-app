@@ -2,6 +2,8 @@ var nl = document.getElementById("nl"); // Logaritma biner
 
 // List untuk turing machine
 var logLine = [];
+// Turing machine
+var logTmLine = document.getElementById("logTm");
 
 // After click = button
 function doLog() {
@@ -30,9 +32,7 @@ function doLogPrev() {
 // Clear TM
 function doLogClear() {
     // Write here...
-    var list = document.getElementById("logTm");
-    
     // Declare list to null and opsLine to null
-    list.innerHTML = "";
+    logTmLine.innerHTML = "";
     logLine = [];
 }
