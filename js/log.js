@@ -42,3 +42,15 @@ function doLogClear() {
     logTmLine.innerHTML = "";
     logLine = [];
 }
+
+// Show answer
+function showLogAns() {
+    // Write here...
+    var ans = 0;    // Jawaban
+
+    // log_2 ans
+
+    // Show answer on ans field
+    var ansField = document.getElementById("logAns");
+    ansField.textContent = ans;
+}

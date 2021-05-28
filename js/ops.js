@@ -53,18 +53,11 @@ function doOpsAuto() {
 
     // Penjumlahan
     if (ops.value == "add") {
-        // Jika belum final state
-        if (state != 5) {
-            looper = setInterval(doOpsNext, 500); // do next move every .5 sec
-        } else {
-            // Selesai
-            clearInterval(looper);
-            doOpsNext();
-        }
+        looper = setInterval(doOpsNext, 400); // do next move every .5 sec
     }
 
     // Pengurangan
-    else if (ops.value == "subs") {
+    else if (ops.value == "sub") {
 
     }
 
@@ -251,14 +244,18 @@ function doOpsNext() {
             // STATE 5
             else if (state == 5) {
                 // Selesai
+                stopOpsAuto();
                 opsTmLine.childNodes[it].className += " active";
                 opsTmLine.childNodes[it].scrollIntoView(false);
+
+                // Show answer in decimal
+                showOpsAns();
             }
         }
     }
 
     // Pengurangan
-    else if (ops.value == "subs") {
+    else if (ops.value == "sub") {
 
     }
 
@@ -292,7 +289,7 @@ function doOpsPrev() {
     }
 
     // Pengurangan
-    else if (ops.value == "subs") {
+    else if (ops.value == "sub") {
 
     }
 
@@ -323,4 +320,43 @@ function doOpsClear() {
     // Declare list to null and opsLine to null
     opsTmLine.innerHTML = "";
     opsLine = [];
+}
+
+// Show answer
+function showOpsAns() {
+    // Write here...
+    var ans = 0;    // Jawaban
+    // Penjumlahan
+    if (ops.value == "add") {
+        ans = +n1.value + +n2.value;
+    }
+
+    // Pengurangan
+    else if (ops.value == "sub") {
+        ans = n1.value - n2.value;
+    }
+
+    // Perkalian
+    else if (ops.value == "times") {
+        ans = n1.value * n2.value;
+    }
+
+    // Pembagian
+    else if (ops.value == "divide") {
+        ans = n1.value / n2.value;
+    }
+
+    // Modulo
+    else if (ops.value == "mod") {
+        ans = n1.value % n2.value;
+    }
+
+    // Perpangkatan
+    else if (ops.value == "exp") {
+        ans = Math.pow(n1.value, n2.value);
+    }
+
+    // Show answer on ans field
+    var ansField = document.getElementById("opsAns");
+    ansField.textContent = ans;
 }

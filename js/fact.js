@@ -42,3 +42,15 @@ function doFactClear() {
     factTmLine.innerHTML = "";
     factLine = [];
 }
+
+// Show answer
+function showFactAns() {
+    // Write here...
+    var ans = 0;    // Jawaban
+
+    // ans faktorial
+
+    // Show answer on ans field
+    var ansField = document.getElementById("factAns");
+    ansField.textContent = ans;
+}
