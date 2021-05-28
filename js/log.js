@@ -17,6 +17,12 @@ function doLogAuto() {
     
 }
 
+// Stop auto moves
+function stopLogAuto() {
+    // Clear interval
+    clearInterval(looper);
+}
+
 // Next move
 function doLogNext() {
     // Write here...

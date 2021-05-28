@@ -17,6 +17,12 @@ function doFactAuto() {
 
 }
 
+// Stop auto moves
+function stopFactAuto() {
+    // Clear interval
+    clearInterval(looper);
+}
+
 // Next move
 function doFactNext() {
     // Write here...
