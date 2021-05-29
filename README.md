@@ -6,11 +6,11 @@ _Simulator Turing Machine menggunakan Javascript._ __Untuk saat ini belum bisa b
 
 Menjalankan operasi bilangan:
 
--[x] Penjumlahan
--[x] Pengurangan
--[] Perkalian
--[] Pembagian
--[] Modulo
--[] Perpangkatan
--[] Faktorial
--[] Logaritma biner
+[x] Penjumlahan
+[x] Pengurangan
+[] Perkalian
+[] Pembagian
+[] Modulo
+[] Perpangkatan
+[] Faktorial
+[] Logaritma biner
