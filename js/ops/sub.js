@@ -4,7 +4,9 @@ function subMove() {
     if (opsLine[0]) {
         // Deactivate block
         crAct = document.getElementsByClassName("active");
-        crAct[0].className = crAct[0].className.replace(" active", "");
+        for (i = 0; i < crAct.length; i++) {
+            crAct[i].className = crAct[i].className.replace(" active", "");
+        }
 
         // STATE 0
         if (state == 0) {
@@ -76,9 +78,6 @@ function subMove() {
             }
             // 0, X / L
             else if (opsLine[it].content == "0") {
-                // Tambah blank block
-                opsLine.push(new Blockops("B"));
-
                 // Change textContent
                 opsLine[it].changeTo("X");
                 opsTmLine.childNodes[it].textContent = "X";
@@ -174,12 +173,12 @@ function subMove() {
             }
         }
 
-        // STATE 5 (FINAL STATE)
+        // STATE 6 (FINAL STATE)
         else if (state == 6) {
             // Selesai
             stopOpsAuto();
             opsTmLine.childNodes[it].className += " active";
-            opsTmLine.childNodes[it].scrollIntoView(false);
+            opsTmLine.childNodes[opsLine.length - 3].scrollIntoView(false);
 
             // Show answer in decimal
             showOpsAns();

@@ -23,8 +23,9 @@ function doOps() {
     // Jika input field terisi
     if (n1.value && n2.value) {
         opsLine.push(new Blockops("B"));
-        opsTmLine.childNodes[0].className += " active";
-        it = 1;
+        opsLine.push(new Blockops("B"));
+        opsTmLine.childNodes[1].className += " active";
+        it = 2;
         state = 0;
 
         // Jika pengurangan dan n1 > n2
@@ -56,6 +57,7 @@ function doOps() {
         }
 
         opsLine.push(new Blockops("B"));
+        opsLine.push(new Blockops("B"));
     }
 }
 
@@ -66,35 +68,7 @@ function doOpsAuto() {
     // use childNodes fun to activate by adding active class
     // use setInterval(doOpsNext(), 500)
 
-    // Penjumlahan
-    if (ops.value == "add") {
-        looper = setInterval(doOpsNext, 400); // do next move every .5 sec
-    }
-
-    // Pengurangan
-    else if (ops.value == "sub") {
-        looper = setInterval(doOpsNext, 400);
-    }
-
-    // Perkalian
-    else if (ops.value == "times") {
-
-    }
-
-    // Pembagian
-    else if (ops.value == "divide") {
-
-    }
-
-    // Modulo
-    else if (ops.value == "mod") {
-
-    }
-
-    // Perpangkatan
-    else if (ops.value == "exp") {
-
-    }
+    looper = setInterval(doOpsNext, 200); // do next move every .2 sec
 }
 
 // Stop auto moves
@@ -142,6 +116,9 @@ function doOpsClear() {
     // Declare list to null and opsLine to null
     opsTmLine.innerHTML = "";
     opsLine = [];
+
+    // Clear interval
+    clearInterval(looper);
 
     // Change answer field
     var ansField = document.getElementById("opsAns");

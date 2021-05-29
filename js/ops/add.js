@@ -3,7 +3,9 @@ function addMove() {
     if (opsLine[0]) {
         // Deactivate block
         crAct = document.getElementsByClassName("active");
-        crAct[0].className = crAct[0].className.replace(" active", "");
+        for (i = 0; i < crAct.length; i++) {
+            crAct[i].className = crAct[i].className.replace(" active", "");
+        }
 
         // STATE 0
         if (state == 0) {
@@ -85,6 +87,9 @@ function addMove() {
                 // Change textContent
                 opsLine[it].changeTo("0");
                 opsTmLine.childNodes[it].textContent = "0";
+
+                // Result
+                opsTmLine.childNodes[it].className += " result";
 
                 // Activate block
                 opsTmLine.childNodes[it].className += " active";

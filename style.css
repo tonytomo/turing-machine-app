@@ -82,6 +82,9 @@ body {
     color: #fff;
     border-radius: 5px;
 }
+.result {
+    background-color: #643a3a;
+}
 .active {
     background-color: #555;
 }
