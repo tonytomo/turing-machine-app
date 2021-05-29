@@ -14,7 +14,7 @@ function doFact() {
 // Auto move
 function doFactAuto() {
     // Write here...
-
+    looper = setInterval(doFactNext, 400);
 }
 
 // Stop auto moves
@@ -27,12 +27,6 @@ function stopFactAuto() {
 function doFactNext() {
     // Write here...
 
-}
-
-// Previous move
-function doFactPrev() {
-    // Write here...
-    
 }
 
 // Clear TM

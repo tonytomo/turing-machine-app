@@ -14,7 +14,7 @@ function doLog() {
 // Auto move
 function doLogAuto() {
     // Write here...
-    
+    looper = setInterval(doLogNext, 400);
 }
 
 // Stop auto moves
@@ -27,12 +27,6 @@ function stopLogAuto() {
 function doLogNext() {
     // Write here...
 
-}
-
-// Previous move
-function doLogPrev() {
-    // Write here...
-    
 }
 
 // Clear TM
