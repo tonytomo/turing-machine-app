@@ -8,7 +8,7 @@ Menjalankan operasi bilangan:
 
 - [x] Penjumlahan
 - [x] Pengurangan
-- [ ] Perkalian
+- [x] Perkalian
 - [ ] Pembagian
 - [ ] Modulo
 - [ ] Perpangkatan
