@@ -320,6 +320,10 @@ function doOpsClear() {
     // Declare list to null and opsLine to null
     opsTmLine.innerHTML = "";
     opsLine = [];
+
+    // Change answer field
+    var ansField = document.getElementById("opsAns");
+    ansField.textContent = 0;
 }
 
 // Show answer

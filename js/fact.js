@@ -41,6 +41,10 @@ function doFactClear() {
     // Declare list to null and opsLine to null
     factTmLine.innerHTML = "";
     factLine = [];
+
+    // Change ans field
+    var ansField = document.getElementById("factAns");
+    ansField.textContent = 0;
 }
 
 // Show answer

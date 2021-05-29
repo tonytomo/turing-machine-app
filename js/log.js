@@ -41,6 +41,10 @@ function doLogClear() {
     // Declare list to null and opsLine to null
     logTmLine.innerHTML = "";
     logLine = [];
+
+    // Change ans field
+    var ansField = document.getElementById("logAns");
+    ansField.textContent = 0;
 }
 
 // Show answer
