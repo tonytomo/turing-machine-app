@@ -25,7 +25,11 @@ function stopFactAuto() {
 
 // Next move
 function doFactNext() {
-    // Write here...
+    // *******************************
+    //            FAKTORIAL
+    //      Tempat untuk tiap state
+    // *******************************
+    // Tulis dibawah ini...
 
 }
 

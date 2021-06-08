@@ -1,4 +1,8 @@
 function divideMove() {
-    // Write here...
+    // *******************************
+    //            PEMBAGIAN
+    //      Tempat untuk tiap state
+    // *******************************
+    // Tulis dibawah ini...
     
 }

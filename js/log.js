@@ -25,7 +25,11 @@ function stopLogAuto() {
 
 // Next move
 function doLogNext() {
-    // Write here...
+    // *******************************
+    //          LOGARITMA BINER
+    //      Tempat untuk tiap state
+    // *******************************
+    // Tulis dibawah ini...
 
 }
 

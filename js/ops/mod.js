@@ -1,4 +1,8 @@
 function modMove() {
-    // Write here...
+    // *******************************
+    //            MODULO
+    //      Tempat untuk tiap state
+    // *******************************
+    // Tulis dibawah ini...
     
 }

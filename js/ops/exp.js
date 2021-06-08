@@ -1,4 +1,8 @@
 function expMove() {
-    // Write here...
+    // *******************************
+    //       EXPONENT/PERPANGKATAN
+    //      Tempat untuk tiap state
+    // *******************************
+    // Tulis dibawah ini...
     
 }
