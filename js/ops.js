@@ -12,16 +12,29 @@ var looper;     // Auto moves
 // List untuk turing machine
 var opsLine = [];
 // Turing machine
-var opsTmLine = document.getElementById("opsTm");
+const opsTmLine = document.getElementById("opsTm");
+
+// Selector controller
+const opscontrol = document.querySelectorAll(".opscontrol");
 
 // After click = button
 // Create TM blocks
 function doOps() {
     // Write here...
-    doOpsClear();
 
     // Jika input field terisi
     if (n1.value && n2.value) {
+        // Clear
+        doOpsClear();
+
+        // Enable control
+        enableOps(0);
+        enableOps(2);
+        enableOps(3);
+
+        // Disable control
+        disableOps(1);
+
         opsLine.push(new Blockops("B"));
         opsLine.push(new Blockops("B"));
         opsTmLine.childNodes[1].className += " active";
@@ -68,11 +81,27 @@ function doOpsAuto() {
     // use childNodes fun to activate by adding active class
     // use setInterval(doOpsNext(), 500)
 
+    // Enable control
+    enableOps(1);
+
+    // Disable control
+    disableOps(0);
+    disableOps(2);
+    disableOps(3);
+
     looper = setInterval(doOpsNext, 200); // do next move every .2 sec
 }
 
 // Stop auto moves
 function stopOpsAuto() {
+    // Enable control
+    enableOps(0);
+    enableOps(2);
+    enableOps(3);
+
+    // Disable control
+    disableOps(1);
+
     // Clear interval
     clearInterval(looper);
 }
@@ -116,6 +145,12 @@ function doOpsClear() {
     // Declare list to null and opsLine to null
     opsTmLine.innerHTML = "";
     opsLine = [];
+
+    // Disable all control
+    disableOps(0);
+    disableOps(1);
+    disableOps(2);
+    disableOps(3);
 
     // Clear interval
     clearInterval(looper);
@@ -162,4 +197,14 @@ function showOpsAns() {
     // Show answer on ans field
     var ansField = document.getElementById("opsAns");
     ansField.textContent = ans;
+}
+
+// Enable controller
+function enableOps(index) {
+    opscontrol[index].disabled = false;
+}
+
+// Disable controller
+function disableOps(index) {
+    opscontrol[index].disabled = true;
 }

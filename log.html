@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turing Machine</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <!-- Title -->
+        <div class="title">
+            Turing Machine
+        </div>
+        <!-- Navigation -->
+        <ul class="nav-list">
+            <li><a href="index.html">2 angka</a></li>
+            <li><a href="fact.html">Faktorial</a></li>
+            <li><a href="log.html">Logaritma</a></li>
+        </ul>
+    </nav>
+
+    <!-- ******************* -->
+    <!-- OPERASI LOG BINER -->
+    <!-- ******************* -->
+    <section class="container">
+        <!-- logaritma biner -->
+        <div class="form-wrapper">
+            <h3>log_2</h3>
+            <input type="number" name="nl" id="nl">
+            <button onmousedown="doLog()">=</button>
+            <h3 id="logAns">0</h3>
+        </div>
+
+        <!-- TM -->
+        <div class="tm-wrapper" id="logTm">
+            <!-- Tempat mesin turing -->
+            <!-- Berisi komponen persegi dengan nilai -->
+            <!-- Dibuat dengan js -->
+        </div>
+
+        <!-- Controller -->
+        <div class="form-wrapper">
+            <button disabled onmousedown="doLogAuto()" class="logcontrol">Auto</button>
+            <button disabled onmousedown="stopLogAuto()" class="logcontrol">Stop</button>
+            <button disabled onmousedown="doLogClear()" class="logcontrol">Clear</button>
+            <button disabled onmousedown="doLogNext()" class="logcontrol">Next move</button>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/log.js"></script>
+    <script src="js/comp.js"></script>
+</body>
+
+</html>

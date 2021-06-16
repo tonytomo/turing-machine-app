@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turing Machine</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <!-- Title -->
+        <div class="title">
+            Turing Machine
+        </div>
+        <!-- Navigation -->
+        <ul class="nav-list">
+            <li><a href="index.html">2 angka</a></li>
+            <li><a href="fact.html">Faktorial</a></li>
+            <li><a href="log.html">Logaritma</a></li>
+        </ul>
+    </nav>
+    
+    <!-- ******************* -->
+    <!-- OPERASI ARITMATIKA -->
+    <!-- ******************* -->
+    <section class="container">
+        <!-- penjumlahan, pengurangan, perkalian, pembagian, modulo, perpangkatan -->
+        <div class="form-wrapper">
+            <input type="number" name="n1" id="n1">
+            <select name="ops" id="ops">
+                <option value="add">+</option>
+                <option value="sub">-</option>
+                <option value="times">*</option>
+                <option value="divide">/</option>
+                <option value="mod">%</option>
+                <option value="exp">^</option>
+            </select>
+            <input type="number" name="n2" id="n2">
+            <button onmousedown="doOps()">=</button>
+            <h3 id="opsAns">0</h3>
+        </div>
+
+        <!-- TM -->
+        <div class="tm-wrapper" id="opsTm">
+            <!-- Tempat mesin turing -->
+            <!-- Berisi komponen persegi dengan nilai -->
+            <!-- Dibuat dengan js -->
+        </div>
+
+        <!-- Controller -->
+        <div class="form-wrapper">
+            <button disabled onmousedown="doOpsAuto()" class="opscontrol">Auto</button>
+            <button disabled onmousedown="stopOpsAuto()" class="opscontrol">Stop</button>
+            <button disabled onmousedown="doOpsClear()" class="opscontrol">Clear</button>
+            <button disabled onmousedown="doOpsNext()" class="opscontrol">Next move</button>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/ops.js"></script>
+    <script src="js/comp.js"></script>
+    <script src="js/ops/add.js"></script>
+    <script src="js/ops/sub.js"></script>
+    <script src="js/ops/times.js"></script>
+    <script src="js/ops/divide.js"></script>
+    <script src="js/ops/mod.js"></script>
+    <script src="js/ops/exp.js"></script>
+</body>
+
+</html>

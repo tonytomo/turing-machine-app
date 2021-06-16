@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turing Machine</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <!-- Title -->
+        <div class="title">
+            Turing Machine
+        </div>
+        <!-- Navigation -->
+        <ul class="nav-list">
+            <li><a href="index.html">2 angka</a></li>
+            <li><a href="fact.html">Faktorial</a></li>
+            <li><a href="log.html">Logaritma</a></li>
+        </ul>
+    </nav>
+    
+    <!-- ******************* -->
+    <!-- OPERASI FAKTORIAL -->
+    <!-- ******************* -->
+    <section class="container">
+        <!-- faktorial -->
+        <div class="form-wrapper">
+            <input type="number" name="nf" id="nf">
+            <h3>!</h3>
+            <button onmousedown="doFact()">=</button>
+            <h3 id="factAns">0</h3>
+        </div>
+
+        <!-- TM -->
+        <div class="tm-wrapper" id="factTm">
+            <!-- Tempat mesin turing -->
+            <!-- Berisi komponen persegi dengan nilai -->
+            <!-- Dibuat dengan js -->
+        </div>
+
+        <!-- Controller -->
+        <div class="form-wrapper">
+            <button disabled onmousedown="doFactAuto()" class="factcontrol">Auto</button>
+            <button disabled onmousedown="stopFactAuto()" class="factcontrol">Stop</button>
+            <button disabled onmousedown="doFactClear()" class="factcontrol">Clear</button>
+            <button disabled onmousedown="doFactNext()" class="factcontrol">Next move</button>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/fact.js"></script>
+    <script src="js/comp.js"></script>
+</body>
+
+</html>

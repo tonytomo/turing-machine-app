@@ -160,6 +160,14 @@ function addMove() {
             opsTmLine.childNodes[it].className += " active";
             opsTmLine.childNodes[it].scrollIntoView(false);
 
+            // Enable control
+            enableOps(2);
+
+            // Disable control
+            disableOps(0);
+            disableOps(1);
+            disableOps(3);
+
             // Show answer in decimal
             showOpsAns();
         }

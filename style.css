@@ -16,6 +16,37 @@ body {
     font-family: sans-serif;
 }
 
+nav {
+    display: flex;
+    flex-direction: row;
+    background-color: #222;
+}
+nav * {
+    font-family: 'Courier New', Courier, monospace;
+}
+.title {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+}
+.nav-list {
+    margin-left: auto;
+    list-style: none;
+    display: flex;
+    padding-right: 1em;
+}
+.nav-list a {
+    margin: 0;
+    color: #fff;
+    text-decoration: none;
+    padding: 1em 1.5em;
+    transition-duration: 200ms;
+}
+.nav-list a:hover {
+    border-bottom: 3px inset #0091ff;
+}
+
 .container {
     margin: 1em 3em;
     padding: 2em 1em;
@@ -51,9 +82,12 @@ body {
 .form-wrapper > *:focus {
     background-color: #555;
 }
-.form-wrapper button:hover {
+.form-wrapper button:hover:enabled {
     cursor: pointer;
     background-color: #0091ff;
+}
+.form-wrapper > button:disabled {
+    color: #333;
 }
 
 .tm-wrapper {

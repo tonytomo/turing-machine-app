@@ -371,6 +371,14 @@ function timesMove() {
             stopOpsAuto();
             opsTmLine.childNodes[it + 1].scrollIntoView(false);
 
+            // Enable control
+            enableOps(2);
+
+            // Disable control
+            disableOps(0);
+            disableOps(1);
+            disableOps(3);
+
             // Show answer in decimal
             showOpsAns();
         }
