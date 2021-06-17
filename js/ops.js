@@ -182,7 +182,7 @@ function showOpsAns() {
 
     // Pembagian
     else if (ops.value == "divide") {
-        ans = n1.value / n2.value;
+        ans = Math.floor(n1.value / n2.value);
     }
 
     // Modulo
