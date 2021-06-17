@@ -8,6 +8,7 @@ var it;         // Moves iteration, ++ kekanan, -- kekiri
 var state;      // State
 
 var looper;     // Auto moves
+var done;
 
 // List untuk turing machine
 var opsLine = [];
