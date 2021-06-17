@@ -1,5 +1,13 @@
 var nl = document.getElementById("nl"); // Logaritma biner
 
+var i;          // iteration for loop
+var crAct;      // Current active block
+var it;         // Moves iteration, ++ kekanan, -- kekiri
+var state;      // State
+
+var looper;     // Auto moves
+var done;       // Flag done
+
 // List untuk turing machine
 var logLine = [];
 // Turing machine
