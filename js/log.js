@@ -52,7 +52,7 @@ function doLog() {
 // Auto move
 function doLogAuto() {
   // Write here...
-  looper = setInterval(doLogNext, 400);
+  looper = setInterval(doLogNext, 100);
   // Enable control
   enableLog(1);
 

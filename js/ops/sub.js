@@ -21,12 +21,15 @@ function subMove() {
         moving(4, 0, "X", "X", 1);
         moving(5, 5, "X", "B", 1);
         moving(5, 6, "0", "0", 0);
+        moving(6, 6, "B", "B", 0);
+        moving(6, 7, "C", "B", 0);
+        moving(7, 7, "X", "B", 0);
+        moving(7, 8, "B", "B", 1);
 
-        // STATE 6 (FINAL STATE)
-        if (state == 6) {
+        // STATE 8 (FINAL STATE)
+        if (state == 8) {
             // Selesai
             stopOpsAuto();
-            opsTmLine.childNodes[it].className += " active";
             opsTmLine.childNodes[opsLine.length - 3].scrollIntoView(false);
 
             // Enable control

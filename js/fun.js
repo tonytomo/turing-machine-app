@@ -30,7 +30,7 @@ function moving(fromState, toState, oldContent, newContent, arah, adding)
         done = 1;
     }
 }
-
+// Faktorial
 function movingf(fromState, toState, oldContent, newContent, arah, adding) 
 {
     if (state == fromState && factLine[it].content == oldContent && done == 0) {
@@ -62,7 +62,7 @@ function movingf(fromState, toState, oldContent, newContent, arah, adding)
         done = 1;
     }
 }
-
+// Logaritma biner
 function movingl(fromState, toState, oldContent, newContent, arah, adding) 
 {
     if (state == fromState && logLine[it].content == oldContent && done == 0) {

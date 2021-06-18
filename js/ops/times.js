@@ -18,7 +18,7 @@ function timesMove() {
         moving(2, 3, "C", "C", 1);
         moving(3, 3, "X", "X", 1);
         moving(3, 4, "0", "X", 0);
-        moving(3, 12, "C", "B", 1);
+        moving(3, 12, "C", "B", 0);
         moving(4, 4, "X", "X", 0);
         moving(4, 5, "C", "C", 0);
         moving(5, 5, "Y", "Y", 0);
@@ -38,9 +38,13 @@ function timesMove() {
         moving(10, 5, "C", "C", 0);
         moving(11, 11, "Y", "0", 1);
         moving(11, 3, "C", "C", 1);
+        moving(12, 12, "X", "B", 0);
+        moving(12, 13, "C", "B", 0);
+        moving(13, 13, "0", "B", 0);
+        moving(13, 14, "B", "B", 1);
 
-        // STATE 12 (FINAL STATE)
-        if (state == 12) {
+        // STATE 14 (FINAL STATE)
+        if (state == 14) {
             // Selesai
             stopOpsAuto();
             opsTmLine.childNodes[it + 1].scrollIntoView(false);

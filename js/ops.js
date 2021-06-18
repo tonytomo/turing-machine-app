@@ -90,7 +90,7 @@ function doOpsAuto() {
     disableOps(2);
     disableOps(3);
 
-    looper = setInterval(doOpsNext, 200); // do next move every .2 sec
+    looper = setInterval(doOpsNext, 100); // do next move every .2 sec
 }
 
 // Stop auto moves
