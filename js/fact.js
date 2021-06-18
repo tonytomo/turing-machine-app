@@ -15,7 +15,7 @@ var factLine = [];
 var factTmLine = document.getElementById('factTm');
 
 // Selector controller
-const factcontrol = document.querySelectorAll(".factcontrol");
+const factcontrol = document.querySelectorAll('.factcontrol');
 
 // After click = button
 function doFact() {
@@ -30,7 +30,7 @@ function doFact() {
     enableFact(0);
     enableFact(2);
     enableFact(3);
-  
+
     // Disable control
     disableFact(1);
 
@@ -40,8 +40,15 @@ function doFact() {
     it = 2;
     state = 0;
 
-    for (i = 0; i < nf.value; i++) {
-      factLine.push(new Blockfact('1'));
+    // Jika Nilainya 0
+    if (nf.value == 0) {
+      factLine.push(new Blockfact('0'));
+    }
+    // Jika lbih dari 0
+    else {
+      for (i = 0; i < nf.value; i++) {
+        factLine.push(new Blockfact('1'));
+      }
     }
 
     // Limiter
@@ -133,26 +140,25 @@ function doFactNext() {
     movingf(10, 10, '1', '1', 0);
     movingf(10, 10, '*', '*', 0);
     movingf(10, 8, 'X', 'X', 1);
-    movingf(10, 10, '1', '1', 0);
     movingf(11, 11, 'X', '1', 0);
     movingf(11, 4, '=', '=', 0);
     movingf(12, 15, '!', '!', 1);
     movingf(12, 6, 'X', 'Y', 1);
     movingf(13, 13, '1', '1', 1);
     movingf(13, 13, '=', '=', 1);
-    movingf(13, 13, '*', '*', 1);
-    movingf(13, 18, 'B', 'B', 1);
+    movingf(13, 13, '*', '1', 1);
+    movingf(13, 18, 'B', 'B', 0);
     movingf(14, 14, '1', '1', 0);
     movingf(14, 14, '!', '!', 0);
     movingf(14, 14, '=', '=', 0);
-    movingf(14, 14, 'Z', 'Z', 0);
+    movingf(14, 14, 'Z', 'X', 0);
     movingf(14, 15, 'Y', 'Y', 1);
     movingf(15, 15, '1', '1', 1);
     movingf(15, 15, '!', '!', 1);
     movingf(15, 15, '=', '=', 1);
     movingf(15, 15, 'X', 'X', 1);
     movingf(15, 16, 'B', '*', 0, 1);
-    movingf(15, 19, '*', 'B', 1);
+    movingf(15, 19, '*', 'B', 0);
     movingf(16, 16, '1', '1', 0);
     movingf(16, 16, '!', '!', 0);
     movingf(16, 16, '=', '=', 0);
@@ -160,11 +166,12 @@ function doFactNext() {
     movingf(16, 17, 'Y', 'Y', 1);
     movingf(17, 15, '!', '!', 1);
     movingf(17, 6, 'X', 'Y', 1);
+    movingf(18, 14, '1', 'B', 0);
     movingf(18, 18, '!', '!', 1);
     movingf(18, 18, '=', '=', 1);
     movingf(18, 19, 'B', '1', 0, 1);
 
-    // STATE 5 (FINAL STATE)
+    // STATE 19 (FINAL STATE)
     if (state == 19) {
       // Selesai
       stopFactAuto();
@@ -224,10 +231,10 @@ function factorial(n) {
 
 // Enable controller
 function enableFact(index) {
-    factcontrol[index].disabled = false;
+  factcontrol[index].disabled = false;
 }
 
 // Disable controller
 function disableFact(index) {
-    factcontrol[index].disabled = true;
+  factcontrol[index].disabled = true;
 }
