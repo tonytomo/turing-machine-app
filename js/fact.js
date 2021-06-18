@@ -14,23 +14,27 @@ var factLine = [];
 // Turing machine
 var factTmLine = document.getElementById('factTm');
 
+// Selector controller
+const factcontrol = document.querySelectorAll('.factcontrol');
+
 // After click = button
 function doFact() {
   // Write here...
-  //factLine.push(new Blockfact('C'));
-  // Write here...
-  doFactClear();
   //factLine.push(new Blockfact("C"));
-  // Enable control
-  enableFact(0);
-  enableFact(2);
-  enableFact(3);
-
-  // Disable control
-  disableFact(1);
 
   //jika input field terisi
   if (nf.value) {
+    // Write here...
+    doFactClear();
+    //factLine.push(new Blockfact("C"));
+    // Enable control
+    enableFact(0);
+    enableFact(2);
+    enableFact(3);
+
+    // Disable control
+    disableFact(1);
+
     factLine.push(new Blockfact('B'));
     factLine.push(new Blockfact('B'));
     factTmLine.childNodes[1].className += ' active';
@@ -53,7 +57,7 @@ function doFact() {
 // Auto move
 function doFactAuto() {
   // Write here...
-  looper = setInterval(doFactNext, 400);
+
   // Enable control
   enableFact(1);
 
@@ -61,6 +65,8 @@ function doFactAuto() {
   disableFact(0);
   disableFact(2);
   disableFact(3);
+
+  looper = setInterval(doFactNext, 400);
 }
 
 // Stop auto moves
@@ -161,7 +167,7 @@ function doFactNext() {
     moving(18, 18, '=', '=', 1);
     moving(18, 19, 'B', '1', 0, 1);
 
-    // STATE 5 (FINAL STATE)
+    // STATE 19 (FINAL STATE)
     if (state == 19) {
       // Selesai
       stopFactAuto();
@@ -211,4 +217,14 @@ function factorial(n) {
   if (n == 0 || n == 1) return 1;
   if (f[n] > 0) return f[n];
   return (f[n] = factorial(n - 1) * n);
+}
+
+// Enable controller
+function enableFact(index) {
+  factcontrol[index].disabled = false;
+}
+
+// Disable controller
+function disableFact(index) {
+  factcontrol[index].disabled = true;
 }
