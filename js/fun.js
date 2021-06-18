@@ -8,7 +8,7 @@ function moving(fromState, toState, oldContent, newContent, arah, adding)
 
         // Activate block
         opsTmLine.childNodes[it].className += " active";
-        opsTmLine.childNodes[it + 1].scrollIntoView(false);
+        opsTmLine.childNodes[it].scrollIntoView();
 
         // Change state
         state = toState;
