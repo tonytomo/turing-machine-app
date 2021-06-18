@@ -21,11 +21,13 @@ function modMove() {
         moving(2, 2, "0", "0", 0);
         moving(2, 3, "C", "C", 0);
         moving(3, 3, "X", "X", 0);
+        moving(3, 3, "C", "C", 0);
         moving(3, 4, "0", "X", 1);
-        moving(3, 11, "B", "B", 1);
+        moving(3, 12, "B", "B", 1);
         moving(4, 4, "X", "X", 1);
         moving(4, 5, "C", "C", 1);
         moving(5, 5, "Y", "Y", 1);
+        moving(5, 5, "C", "C", 1);
         moving(5, 6, "0", "Y", 1);
         moving(6, 7, "0", "0", 0);
         moving(6, 8, "C", "C", 1);
@@ -36,32 +38,35 @@ function modMove() {
         moving(9, 9, "0", "0", 0);
         moving(9, 10, "C", "C", 0);
         moving(10, 10, "Y", "0", 0);
-        moving(10, 3, "C", "C", 0);
-        moving(11, 11, "X", "X", 1);
-        moving(11, 12, "C", "C", 1);
-        moving(12, 12, "Y", "Y", 1);
-        moving(12, 12, "0", "0", 1);
+        moving(10, 11, "C", "C", 0);
+        moving(11, 11, "C", "C", 0);
+        moving(11, 11, "X", "C", 0);
+        moving(11, 4, "0", "X", 1);
+        moving(11, 12, "B", "B", 1);
+        moving(12, 12, "X", "X", 1);
         moving(12, 13, "C", "C", 1);
-        moving(13, 14, "B", "B", 0);
-        moving(13, 18, "0", "0", 1);
-        moving(14, 15, "C", "C", 0);;
-        moving(15, 15, "Y", "B", 0);
-        moving(15, 15, "0", "B", 0);
-        moving(15, 16, "C", "B", 0);
-        moving(16, 16, "X", "0", 0);
-        moving(16, 17, "B", "B", 1);
-        moving(18, 18, "0", "0", 1);
-        moving(18, 19, "B", "B", 0);
-        moving(19, 19, "0", "B", 0);
-        moving(19, 20, "C", "B", 0);
-        moving(20, 20, "0", "0", 0);
-        moving(20, 20, "Y", "B", 0);
-        moving(20, 21, "C", "B", 0);
-        moving(21, 21, "X", "B", 0);
-        moving(21, 17, "B", "B", 1);
+        moving(13, 13, "C", "C", 1);
+        moving(13, 14, "Y", "Y", 1);
+        moving(13, 14, "0", "0", 1);
+        moving(14, 14, "Y", "Y", 1);
+        moving(14, 14, "0", "0", 1);
+        moving(14, 15, "C", "C", 1);
+        moving(15, 16, "B", "B", 0);
+        moving(15, 20, "0", "0", 1);
+        moving(16, 17, "C", "B", 0);
+        moving(17, 17, "0", "B", 0);
+        moving(17, 17, "Y", "B", 0);
+        moving(17, 18, "C", "B", 0);
+        moving(18, 18, "C", "B", 0);
+        moving(18, 18, "X", "0", 0);
+        moving(18, 19, "B", "B", 1);
+        moving(20, 20, "0", "0", 1);
+        moving(20, 21, "B", "B", 0);
+        moving(21, 21, "0", "B", 0);
+        moving(21, 17, "C", "B", 0);
 
-        // STATE 17 (FINAL STATE)
-        if (state == 17) {
+        // STATE 19 (FINAL STATE)
+        if (state == 19) {
             // Selesai
             stopOpsAuto();
             opsTmLine.childNodes[it].scrollIntoView(false);
