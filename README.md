@@ -1,6 +1,6 @@
 # Turing Machine
 
-_Simulator Turing Machine menggunakan Javascript._ __Untuk saat ini belum bisa berjalan.__
+_Simulator Turing Machine menggunakan Javascript._
 
 ## Contents
 
@@ -9,8 +9,8 @@ Menjalankan operasi bilangan:
 - [x] Penjumlahan
 - [x] Pengurangan
 - [x] Perkalian
-- [ ] Pembagian
-- [ ] Modulo
+- [x] Pembagian
+- [x] Modulo
 - [ ] Perpangkatan
-- [ ] Faktorial
-- [ ] Logaritma biner
+- [x] Faktorial
+- [x] Logaritma biner
