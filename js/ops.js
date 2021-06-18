@@ -18,6 +18,9 @@ const opsTmLine = document.getElementById("opsTm");
 // Selector controller
 const opscontrol = document.querySelectorAll(".opscontrol");
 
+// Selector notif
+const notif = document.getElementById('notif');
+
 // After click = button
 // Create TM blocks
 function doOps() {
@@ -28,13 +31,28 @@ function doOps() {
         // Clear
         doOpsClear();
 
-        // Enable control
-        enableOps(0);
-        enableOps(2);
-        enableOps(3);
+        // Jika input negatif
+        if (ops.value == "exp" || ops.value == "mod") {
+            if (n1.value < 0 || n2.value < 0) {
+                addNotif("Input tidak boleh negatif!");
+            } else {
+                // Enable control
+                enableOps(0);
+                enableOps(2);
+                enableOps(3);
 
-        // Disable control
-        disableOps(1);
+                // Disable control
+                disableOps(1);
+            }
+        } else {
+            // Enable control
+            enableOps(0);
+            enableOps(2);
+            enableOps(3);
+
+            // Disable control
+            disableOps(1);
+        }
 
         opsLine.push(new Blockops("B"));
         opsLine.push(new Blockops("B"));
@@ -208,4 +226,9 @@ function enableOps(index) {
 // Disable controller
 function disableOps(index) {
     opscontrol[index].disabled = true;
+}
+
+// Tambah notif
+function addNotif(pesan) {
+    notif.textContent = pesan;
 }

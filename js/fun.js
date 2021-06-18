@@ -10,6 +10,10 @@ function moving(fromState, toState, oldContent, newContent, arah, adding)
         opsTmLine.childNodes[it].className += " active";
         opsTmLine.childNodes[it].scrollIntoView();
 
+        // Tambah notif
+        var arahke = (arah == 1) ? "R": "L";
+        addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
+        
         // Change state
         state = toState;
 
@@ -42,6 +46,10 @@ function movingf(fromState, toState, oldContent, newContent, arah, adding)
         factTmLine.childNodes[it].className += " active";
         factTmLine.childNodes[it].scrollIntoView();
 
+        // Tambah notif
+        var arahke = (arah == 1) ? "R": "L";
+        addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
+        
         // Change state
         state = toState;
 
@@ -73,6 +81,10 @@ function movingl(fromState, toState, oldContent, newContent, arah, adding)
         // Activate block
         logTmLine.childNodes[it].className += " active";
         logTmLine.childNodes[it].scrollIntoView();
+
+        // Tambah notif
+        var arahke = (arah == 1) ? "R": "L";
+        addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
 
         // Change state
         state = toState;

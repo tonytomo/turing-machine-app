@@ -26,13 +26,18 @@ function doFact() {
     // CLear
     doFactClear();
 
-    // Enable control
-    enableFact(0);
-    enableFact(2);
-    enableFact(3);
+    // Jika input negatif
+    if (nf.value < 0) {
+      addNotif("Input tidak boleh negatif!");
+    } else {
+      // Enable control
+      enableFact(0);
+      enableFact(2);
+      enableFact(3);
 
-    // Disable control
-    disableFact(1);
+      // Disable control
+      disableFact(1);
+    }
 
     factLine.push(new Blockfact('B'));
     factLine.push(new Blockfact('B'));
@@ -170,9 +175,14 @@ function doFactNext() {
     movingf(18, 18, '!', '!', 1);
     movingf(18, 18, '=', '=', 1);
     movingf(18, 19, 'B', '1', 0, 1);
+    movingf(19, 19, '1', '1', 0);
+    movingf(19, 20, '=', 'B', 0);
+    movingf(20, 20, '!', 'B', 0);
+    movingf(20, 20, 'Y', 'B', 0);
+    movingf(20, 21, 'B', 'B', 1);
 
-    // STATE 19 (FINAL STATE)
-    if (state == 19) {
+    // STATE 21 (FINAL STATE)
+    if (state == 21) {
       // Selesai
       stopFactAuto();
       factTmLine.childNodes[it].scrollIntoView(false);
@@ -237,4 +247,9 @@ function enableFact(index) {
 // Disable controller
 function disableFact(index) {
   factcontrol[index].disabled = true;
+}
+
+// Tambah notif
+function addNotif(pesan) {
+  notif.textContent = pesan;
 }

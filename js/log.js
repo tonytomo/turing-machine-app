@@ -25,13 +25,18 @@ function doLog() {
     // CLear
     doLogClear();
 
-    // Enable control
-    enableLog(0);
-    enableLog(2);
-    enableLog(3);
+    // Jika input negatif
+    if (nl.value < 0) {
+      addNotif("Input tidak boleh negatif!");
+    } else {
+      // Enable control
+      enableLog(0);
+      enableLog(2);
+      enableLog(3);
 
-    // Disable control
-    disableLog(1);
+      // Disable control
+      disableLog(1);
+    }
 
     logLine.push(new Blocklog('B'));
     logLine.push(new Blocklog('B'));
@@ -182,4 +187,9 @@ function enableLog(index) {
 // Disable controller
 function disableLog(index) {
   logcontrol[index].disabled = true;
+}
+
+// Tambah notif
+function addNotif(pesan) {
+  notif.textContent = pesan;
 }
