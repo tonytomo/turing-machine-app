@@ -15,23 +15,22 @@ var factLine = [];
 var factTmLine = document.getElementById('factTm');
 
 // Selector controller
-const factcontrol = document.querySelectorAll('.factcontrol');
+const factcontrol = document.querySelectorAll(".factcontrol");
 
 // After click = button
 function doFact() {
   // Write here...
-  //factLine.push(new Blockfact("C"));
 
   //jika input field terisi
   if (nf.value) {
-    // Write here...
+    // CLear
     doFactClear();
-    //factLine.push(new Blockfact("C"));
+
     // Enable control
     enableFact(0);
     enableFact(2);
     enableFact(3);
-
+  
     // Disable control
     disableFact(1);
 
@@ -57,7 +56,7 @@ function doFact() {
 // Auto move
 function doFactAuto() {
   // Write here...
-
+  looper = setInterval(doFactNext, 100);
   // Enable control
   enableFact(1);
 
@@ -65,8 +64,6 @@ function doFactAuto() {
   disableFact(0);
   disableFact(2);
   disableFact(3);
-
-  looper = setInterval(doFactNext, 400);
 }
 
 // Stop auto moves
@@ -100,74 +97,74 @@ function doFactNext() {
 
     done = 0;
 
-    moving(0, 1, '1', 'X', 1);
-    moving(0, 18, '0', '0', 1);
-    moving(0, 3, '!', '!', 1);
-    moving(1, 1, '1', '1', 1);
-    moving(1, 1, '!', '!', 1);
-    moving(1, 1, '=', '=', 1);
-    moving(1, 2, 'B', '1', 1, 1);
-    moving(2, 2, '1', '1', 0);
-    moving(2, 2, '!', '!', 0);
-    moving(2, 2, '=', '=', 0);
-    moving(2, 0, 'X', 'X', 1);
-    moving(3, 3, '1', '1', 1);
-    moving(3, 3, '!', '!', 1);
-    moving(3, 3, '=', '=', 1);
-    moving(3, 4, 'B', '*', 0);
-    moving(4, 4, '1', '1', 0);
-    moving(4, 4, '!', '!', 0);
-    moving(4, 4, '=', '=', 0);
-    moving(4, 4, 'X', 'X', 0);
-    moving(4, 6, 'Z', 'Z', 1);
-    moving(4, 5, 'B', 'B', 0);
-    moving(5, 12, 'X', 'Y', 1);
-    moving(6, 13, '!', '!', 1);
-    moving(6, 7, 'X', 'Z', 1);
-    moving(7, 7, '1', '1', 1);
-    moving(7, 7, 'X', 'X', 1);
-    moving(7, 8, '!', '!', 1);
-    moving(8, 8, '=', '=', 1);
-    moving(8, 9, '1', 'X', 1);
-    moving(8, 11, '*', '*', 0);
-    moving(9, 9, '1', '1', 1);
-    moving(9, 9, '*', '*', 1);
-    moving(9, 10, 'B', '1', 0, 1);
-    moving(10, 10, '1', '1', 0);
-    moving(10, 10, '*', '*', 0);
-    moving(10, 8, 'X', 'X', 1);
-    moving(10, 10, '1', '1', 0);
-    moving(11, 11, 'X', '1', 0);
-    moving(11, 4, '=', '=', 0);
-    moving(12, 15, '!', '!', 1);
-    moving(12, 6, 'X', 'Y', 1);
-    moving(13, 13, '1', '1', 1);
-    moving(13, 13, '=', '=', 1);
-    moving(13, 13, '*', '*', 1);
-    moving(13, 18, 'B', 'B', 1);
-    moving(14, 14, '1', '1', 0);
-    moving(14, 14, '!', '!', 0);
-    moving(14, 14, '=', '=', 0);
-    moving(14, 14, 'Z', 'Z', 0);
-    moving(14, 15, 'Y', 'Y', 1);
-    moving(15, 15, '1', '1', 1);
-    moving(15, 15, '!', '!', 1);
-    moving(15, 15, '=', '=', 1);
-    moving(15, 15, 'X', 'X', 1);
-    moving(15, 16, 'B', '*', 0, 1);
-    moving(15, 19, '*', 'B', 1);
-    moving(16, 16, '1', '1', 0);
-    moving(16, 16, '!', '!', 0);
-    moving(16, 16, '=', '=', 0);
-    moving(16, 16, 'X', 'X', 0);
-    moving(16, 17, 'Y', 'Y', 1);
-    moving(17, 15, '!', '!', 1);
-    moving(17, 6, 'X', 'Y', 1);
-    moving(18, 18, '!', '!', 1);
-    moving(18, 18, '=', '=', 1);
-    moving(18, 19, 'B', '1', 0, 1);
+    movingf(0, 1, '1', 'X', 1);
+    movingf(0, 18, '0', '0', 1);
+    movingf(0, 3, '!', '!', 1);
+    movingf(1, 1, '1', '1', 1);
+    movingf(1, 1, '!', '!', 1);
+    movingf(1, 1, '=', '=', 1);
+    movingf(1, 2, 'B', '1', 0, 1);
+    movingf(2, 2, '1', '1', 0);
+    movingf(2, 2, '!', '!', 0);
+    movingf(2, 2, '=', '=', 0);
+    movingf(2, 0, 'X', 'X', 1);
+    movingf(3, 3, '1', '1', 1);
+    movingf(3, 3, '!', '!', 1);
+    movingf(3, 3, '=', '=', 1);
+    movingf(3, 4, 'B', '*', 0, 1);
+    movingf(4, 4, '1', '1', 0);
+    movingf(4, 4, '!', '!', 0);
+    movingf(4, 4, '=', '=', 0);
+    movingf(4, 4, 'X', 'X', 0);
+    movingf(4, 6, 'Z', 'Z', 1);
+    movingf(4, 5, 'B', 'B', 1);
+    movingf(5, 12, 'X', 'Y', 1);
+    movingf(6, 13, '!', '!', 1);
+    movingf(6, 7, 'X', 'Z', 1);
+    movingf(7, 7, '1', '1', 1);
+    movingf(7, 7, 'X', 'X', 1);
+    movingf(7, 8, '!', '!', 1);
+    movingf(8, 8, '=', '=', 1);
+    movingf(8, 9, '1', 'X', 1);
+    movingf(8, 11, '*', '*', 0);
+    movingf(9, 9, '1', '1', 1);
+    movingf(9, 9, '*', '*', 1);
+    movingf(9, 10, 'B', '1', 0, 1);
+    movingf(10, 10, '1', '1', 0);
+    movingf(10, 10, '*', '*', 0);
+    movingf(10, 8, 'X', 'X', 1);
+    movingf(10, 10, '1', '1', 0);
+    movingf(11, 11, 'X', '1', 0);
+    movingf(11, 4, '=', '=', 0);
+    movingf(12, 15, '!', '!', 1);
+    movingf(12, 6, 'X', 'Y', 1);
+    movingf(13, 13, '1', '1', 1);
+    movingf(13, 13, '=', '=', 1);
+    movingf(13, 13, '*', '*', 1);
+    movingf(13, 18, 'B', 'B', 1);
+    movingf(14, 14, '1', '1', 0);
+    movingf(14, 14, '!', '!', 0);
+    movingf(14, 14, '=', '=', 0);
+    movingf(14, 14, 'Z', 'Z', 0);
+    movingf(14, 15, 'Y', 'Y', 1);
+    movingf(15, 15, '1', '1', 1);
+    movingf(15, 15, '!', '!', 1);
+    movingf(15, 15, '=', '=', 1);
+    movingf(15, 15, 'X', 'X', 1);
+    movingf(15, 16, 'B', '*', 0, 1);
+    movingf(15, 19, '*', 'B', 1);
+    movingf(16, 16, '1', '1', 0);
+    movingf(16, 16, '!', '!', 0);
+    movingf(16, 16, '=', '=', 0);
+    movingf(16, 16, 'X', 'X', 0);
+    movingf(16, 17, 'Y', 'Y', 1);
+    movingf(17, 15, '!', '!', 1);
+    movingf(17, 6, 'X', 'Y', 1);
+    movingf(18, 18, '!', '!', 1);
+    movingf(18, 18, '=', '=', 1);
+    movingf(18, 19, 'B', '1', 0, 1);
 
-    // STATE 19 (FINAL STATE)
+    // STATE 5 (FINAL STATE)
     if (state == 19) {
       // Selesai
       stopFactAuto();
@@ -193,6 +190,12 @@ function doFactClear() {
   // Declare list to null and factLine to null
   factTmLine.innerHTML = '';
   factLine = [];
+
+  // Disable all control
+  disableFact(0);
+  disableFact(1);
+  disableFact(2);
+  disableFact(3);
 
   // Change ans field
   var ansField = document.getElementById('factAns');
@@ -221,10 +224,10 @@ function factorial(n) {
 
 // Enable controller
 function enableFact(index) {
-  factcontrol[index].disabled = false;
+    factcontrol[index].disabled = false;
 }
 
 // Disable controller
 function disableFact(index) {
-  factcontrol[index].disabled = true;
+    factcontrol[index].disabled = true;
 }

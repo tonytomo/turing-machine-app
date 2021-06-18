@@ -30,3 +30,67 @@ function moving(fromState, toState, oldContent, newContent, arah, adding)
         done = 1;
     }
 }
+
+function movingf(fromState, toState, oldContent, newContent, arah, adding) 
+{
+    if (state == fromState && factLine[it].content == oldContent && done == 0) {
+        // Change textContent
+        factLine[it].changeTo(newContent);
+        factTmLine.childNodes[it].textContent = newContent;
+
+        // Activate block
+        factTmLine.childNodes[it].className += " active";
+        factTmLine.childNodes[it].scrollIntoView();
+
+        // Change state
+        state = toState;
+
+        if (adding) {
+            // Tambah blank block
+            factLine.push(new Blockfact("B"));
+        }
+
+        if (arah == 1) {
+            // Ke kanan
+            it++;
+        } else {
+            // Kekiri
+            it--;
+        }
+
+        // Flag if done
+        done = 1;
+    }
+}
+
+function movingl(fromState, toState, oldContent, newContent, arah, adding) 
+{
+    if (state == fromState && logLine[it].content == oldContent && done == 0) {
+        // Change textContent
+        logLine[it].changeTo(newContent);
+        logTmLine.childNodes[it].textContent = newContent;
+
+        // Activate block
+        logTmLine.childNodes[it].className += " active";
+        logTmLine.childNodes[it].scrollIntoView();
+
+        // Change state
+        state = toState;
+
+        if (adding) {
+            // Tambah blank block
+            logLine.push(new Blocklog("B"));
+        }
+
+        if (arah == 1) {
+            // Ke kanan
+            it++;
+        } else {
+            // Kekiri
+            it--;
+        }
+
+        // Flag if done
+        done = 1;
+    }
+}
