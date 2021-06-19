@@ -1,6 +1,5 @@
 // Fungsi untuk menyederhanakan
-function moving(fromState, toState, oldContent, newContent, arah, adding) 
-{
+function moving(fromState, toState, oldContent, newContent, arah, adding) {
     if (state == fromState && opsLine[it].content == oldContent && done == 0) {
         // Change textContent
         opsLine[it].changeTo(newContent);
@@ -11,9 +10,13 @@ function moving(fromState, toState, oldContent, newContent, arah, adding)
         opsTmLine.childNodes[it].scrollIntoView();
 
         // Tambah notif
-        var arahke = (arah == 1) ? "R": "L";
-        addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
-        
+        var arahke = (arah == 1) ? "R" : "L";
+        if (fromState == toState) {
+            addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
+        } else {
+            addNotif(state + " > " + toState + " | " + oldContent + ", " + newContent + " / " + arahke);
+        }
+
         // Change state
         state = toState;
 
@@ -35,8 +38,7 @@ function moving(fromState, toState, oldContent, newContent, arah, adding)
     }
 }
 // Faktorial
-function movingf(fromState, toState, oldContent, newContent, arah, adding) 
-{
+function movingf(fromState, toState, oldContent, newContent, arah, adding) {
     if (state == fromState && factLine[it].content == oldContent && done == 0) {
         // Change textContent
         factLine[it].changeTo(newContent);
@@ -47,9 +49,13 @@ function movingf(fromState, toState, oldContent, newContent, arah, adding)
         factTmLine.childNodes[it].scrollIntoView();
 
         // Tambah notif
-        var arahke = (arah == 1) ? "R": "L";
-        addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
-        
+        var arahke = (arah == 1) ? "R" : "L";
+        if (fromState == toState) {
+            addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
+        } else {
+            addNotif(state + " > " + toState + " | " + oldContent + ", " + newContent + " / " + arahke);
+        }
+
         // Change state
         state = toState;
 
@@ -71,8 +77,7 @@ function movingf(fromState, toState, oldContent, newContent, arah, adding)
     }
 }
 // Logaritma biner
-function movingl(fromState, toState, oldContent, newContent, arah, adding) 
-{
+function movingl(fromState, toState, oldContent, newContent, arah, adding) {
     if (state == fromState && logLine[it].content == oldContent && done == 0) {
         // Change textContent
         logLine[it].changeTo(newContent);
@@ -83,8 +88,12 @@ function movingl(fromState, toState, oldContent, newContent, arah, adding)
         logTmLine.childNodes[it].scrollIntoView();
 
         // Tambah notif
-        var arahke = (arah == 1) ? "R": "L";
-        addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
+        var arahke = (arah == 1) ? "R" : "L";
+        if (fromState == toState) {
+            addNotif(state + " | " + oldContent + ", " + newContent + " / " + arahke);
+        } else {
+            addNotif(state + " > " + toState + " | " + oldContent + ", " + newContent + " / " + arahke);
+        }
 
         // Change state
         state = toState;

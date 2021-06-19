@@ -187,6 +187,9 @@ function doFactNext() {
       stopFactAuto();
       factTmLine.childNodes[it].scrollIntoView(false);
 
+      // Add notif
+      addNotif('Selesai');
+
       // Enable control
       enableFact(2);
 

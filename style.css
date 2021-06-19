@@ -89,6 +89,9 @@ nav * {
 .form-wrapper > button:disabled {
     color: #333;
 }
+.form-wrapper > h4 {
+    width: 15ch;
+}
 
 .tm-wrapper {
     max-width: 1200px;

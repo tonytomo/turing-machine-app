@@ -136,6 +136,9 @@ function doLogNext() {
       stopLogAuto();
       logTmLine.childNodes[it].scrollIntoView(false);
 
+      // Add notif
+      addNotif('Selesai');
+
       // Enable control
       enableLog(2);
 
