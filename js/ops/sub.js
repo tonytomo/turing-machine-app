@@ -32,6 +32,9 @@ function subMove() {
             stopOpsAuto();
             opsTmLine.childNodes[opsLine.length - 3].scrollIntoView(false);
 
+            // Add notif
+            addNotif('Selesai');
+
             // Enable control
             enableOps(2);
 

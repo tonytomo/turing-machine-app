@@ -31,7 +31,7 @@ function doOps() {
         // Clear
         doOpsClear();
 
-        // Jika input negatif
+        // Jika input negatif di perpangkatan dan modulus
         if (ops.value == "exp" || ops.value == "mod") {
             if (n1.value < 0 || n2.value < 0) {
                 addNotif("Input tidak boleh negatif!");
@@ -73,6 +73,28 @@ function doOps() {
             for (i = 0; i < n1.value; i++) {
                 opsLine.push(new Blockops("0"));
             }
+
+        // Jika operasi perpangkatan
+        } else if (ops.value == "exp") {
+            // Limiter C
+            opsLine.push(new Blockops("C"));
+
+            // Number 1
+            for (i = 0; i < n1.value; i++) {
+                opsLine.push(new Blockops("0"));
+            }
+
+            // Limiter 1
+            opsLine.push(new Blockops("1"));
+
+            // Limiter C
+            opsLine.push(new Blockops("C"));
+
+            // Number 2
+            for (i = 0; i < n2.value; i++) {
+                opsLine.push(new Blockops("0"));
+            }
+
         } else {
             // Number 1
             for (i = 0; i < n1.value; i++) {
@@ -173,6 +195,9 @@ function doOpsClear() {
 
     // Clear interval
     clearInterval(looper);
+
+    // Add notif
+    addNotif('-');
 
     // Change answer field
     var ansField = document.getElementById("opsAns");

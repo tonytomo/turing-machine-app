@@ -214,6 +214,12 @@ function doFactClear() {
   disableFact(2);
   disableFact(3);
 
+  // Clear interval
+  clearInterval(looper);
+
+  // Add notif
+  addNotif('-');
+
   // Change ans field
   var ansField = document.getElementById('factAns');
   ansField.textContent = 0;

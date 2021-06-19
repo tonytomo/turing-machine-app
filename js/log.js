@@ -163,6 +163,12 @@ function doLogClear() {
   disableLog(2);
   disableLog(3);
 
+  // Clear interval
+  clearInterval(looper);
+
+  // Add notif
+  addNotif('-');
+
   // Change ans field
   var ansField = document.getElementById('logAns');
   ansField.textContent = 0;

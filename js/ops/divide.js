@@ -49,6 +49,9 @@ function divideMove() {
             stopOpsAuto();
             opsTmLine.childNodes[it].scrollIntoView(false);
 
+            // Add notif
+            addNotif('Selesai');
+
             // Enable control
             enableOps(2);
 
