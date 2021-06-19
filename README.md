@@ -11,6 +11,6 @@ Menjalankan operasi bilangan:
 - [x] Perkalian
 - [x] Pembagian
 - [x] Modulo
-- [ ] Perpangkatan
+- [x] Perpangkatan
 - [x] Faktorial
 - [x] Logaritma biner

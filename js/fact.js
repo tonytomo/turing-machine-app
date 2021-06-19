@@ -28,7 +28,7 @@ function doFact() {
 
     // Jika input negatif
     if (nf.value < 0) {
-      addNotif('Input tidak boleh negatif!');
+      addNotif('Input negatif!');
     } else {
       // Enable control
       enableFact(0);

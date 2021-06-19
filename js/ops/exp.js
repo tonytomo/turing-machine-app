@@ -18,7 +18,7 @@ function expMove() {
         moving(1, 2, "1", "1", 1);
         moving(2, 3, "C", "B", 1);
         moving(3, 3, "0", "0", 1);
-        moving(3, 4, "B", "C", 0);
+        moving(3, 4, "B", "C", 0, 1);
         moving(4, 4, "0", "0", 0);
         moving(4, 5, "B", "B", 0);
         moving(5, 6, "1", "1", 0);
@@ -39,7 +39,7 @@ function expMove() {
         moving(12, 13, "C", "C", 1);
         moving(12, 12, "B", "B", 1);
         moving(13, 13, "0", "0", 1);
-        moving(13, 14, "B", "0", 0);
+        moving(13, 14, "B", "0", 0, 1);
         moving(14, 14, "0", "0", 0);
         moving(14, 15, "C", "C", 0);
         moving(15, 15, "0", "0", 0);
@@ -71,7 +71,7 @@ function expMove() {
         moving(25, 25, "Z", "Z", 0);
         moving(26, 26, "0", "0", 1);
         moving(26, 26, "Z", "Z", 1);
-        moving(26, 27, "B", "0", 0);
+        moving(26, 27, "B", "0", 0, 1);
         moving(27, 27, "0", "0", 0);
         moving(27, 25, "Z", "Z", 0);
         moving(28, 29, "1", "1", 1);
@@ -99,6 +99,9 @@ function expMove() {
             // Selesai
             stopOpsAuto();
             opsTmLine.childNodes[it].scrollIntoView(false);
+
+            // Add notif
+            addNotif('Selesai');
 
             // Enable control
             enableOps(2);

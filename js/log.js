@@ -27,7 +27,7 @@ function doLog() {
 
     // Jika input negatif
     if (nl.value < 0) {
-      addNotif("Input tidak boleh negatif!");
+      addNotif("Input negatif!");
     } else {
       // Enable control
       enableLog(0);

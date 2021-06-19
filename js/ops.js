@@ -34,7 +34,7 @@ function doOps() {
         // Jika input negatif di perpangkatan dan modulus
         if (ops.value == "exp" || ops.value == "mod") {
             if (n1.value < 0 || n2.value < 0) {
-                addNotif("Input tidak boleh negatif!");
+                addNotif("Input negatif!");
             } else {
                 // Enable control
                 enableOps(0);
