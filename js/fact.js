@@ -28,7 +28,7 @@ function doFact() {
 
     // Jika input negatif
     if (nf.value < 0) {
-      addNotif("Input tidak boleh negatif!");
+      addNotif('Input tidak boleh negatif!');
     } else {
       // Enable control
       enableFact(0);
@@ -179,6 +179,7 @@ function doFactNext() {
     movingf(19, 20, '=', 'B', 0);
     movingf(20, 20, '!', 'B', 0);
     movingf(20, 20, 'Y', 'B', 0);
+    movingf(20, 20, '0', 'B', 0);
     movingf(20, 21, 'B', 'B', 1);
 
     // STATE 21 (FINAL STATE)
