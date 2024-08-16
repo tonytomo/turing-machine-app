@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Turing Machine Sim</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turing Machine</title>
+        <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/css.gg@2.1.1/icons/icons.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Taprom&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- Arithmetic Operations -->
+        <section class="container">
+            <!-- Form Input -->
+            <div class="form-wrapper">
+                <input
+                    type="text"
+                    title="First operand"
+                    id="firstOperand"
+                    maxlength="2"
+                    placeholder="0"
+                    required
+                />
+                <select title="Operation" id="operation">
+                    <option selected value="addition">+</option>
+                    <option value="subtraction">-</option>
+                    <option value="multiplication">×</option>
+                    <option value="division">÷</option>
+                    <option value="modulo">%</option>
+                    <option value="exponentiation">^</option>
+                </select>
+                <input
+                    type="text"
+                    title="Second operand"
+                    id="secondOperand"
+                    maxlength="2"
+                    placeholder="0"
+                    required
+                />
+                <button type="button" onmousedown="generate()">=</button>
+                <input
+                    readonly
+                    type="text"
+                    title="Result"
+                    id="result"
+                    value="..."
+                />
+            </div>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+            <div class="tm-container">
+                <!-- Turing Machine Visualization -->
+                <div class="tm-wrapper" id="visualBox">
+                    <!-- Will be filled using JS -->
+                </div>
+            </div>
 
-<body>
-    <!-- Navbar -->
-    <nav>
-        <!-- Title -->
-        <div class="title">
-            Turing Machine
-        </div>
-        <!-- Navigation -->
-        <ul class="nav-list">
-            <li><a href="index.html">2 angka</a></li>
-            <li><a href="fact.html">Faktorial</a></li>
-            <li><a href="log.html">Logaritma</a></li>
-        </ul>
-    </nav>
-    
-    <!-- ******************* -->
-    <!-- OPERASI ARITMATIKA -->
-    <!-- ******************* -->
-    <section class="container">
-        <!-- penjumlahan, pengurangan, perkalian, pembagian, modulo, perpangkatan -->
-        <div class="form-wrapper">
-            <input type="number" name="n1" id="n1">
-            <select name="ops" id="ops">
-                <option value="add">+</option>
-                <option value="sub">-</option>
-                <option value="times">*</option>
-                <option value="divide">/</option>
-                <option value="mod">%</option>
-                <option value="exp">^</option>
-            </select>
-            <input type="number" name="n2" id="n2">
-            <button onmousedown="doOps()">=</button>
-            <h3 id="opsAns">0</h3>
-        </div>
+            <!-- Controller -->
+            <div class="controller-wrapper">
+                <!-- button to toggle speed -->
+                <button disabled type="button" onmousedown="speedToggle()" id="speed">
+                    1x
+                </button>
+                <button disabled type="button" onmousedown="play()" id="auto">
+                    <i class="gg-play-button-o"></i>
+                </button>
+                <button disabled type="button" onmousedown="halt()" id="halt">
+                    <i class="gg-play-stop-o"></i>
+                </button>
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="clearBox()"
+                    id="clearBox"
+                >
+                    <i class="gg-trash"></i>
+                </button>
+                <button disabled type="button" onmousedown="next()" id="next">
+                    <i class="gg-arrow-right"></i>
+                </button>
+                <input readonly type="text" title="Log" id="log" value="..." />
+            </div>
+        </section>
 
-        <!-- TM -->
-        <div class="tm-wrapper" id="opsTm">
-            <!-- Tempat mesin turing -->
-            <!-- Berisi komponen persegi dengan nilai -->
-            <!-- Dibuat dengan js -->
-        </div>
-
-        <!-- Controller -->
-        <div class="form-wrapper">
-            <button disabled onmousedown="doOpsAuto()" class="opscontrol">Auto</button>
-            <button disabled onmousedown="stopOpsAuto()" class="opscontrol">Stop</button>
-            <button disabled onmousedown="doOpsClear()" class="opscontrol">Clear</button>
-            <button disabled onmousedown="doOpsNext()" class="opscontrol">Next move</button>
-            <h4 id="notif">-</h4>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="js/ops.js"></script>
-    <script src="js/comp.js"></script>
-    <script src="js/fun.js"></script>
-    <script src="js/ops/add.js"></script>
-    <script src="js/ops/sub.js"></script>
-    <script src="js/ops/times.js"></script>
-    <script src="js/ops/divide.js"></script>
-    <script src="js/ops/mod.js"></script>
-    <script src="js/ops/exp.js"></script>
-</body>
-
+        <!-- Scripts -->
+        <script src="js/components.js"></script>
+        <script src="js/operations.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/operation/addition.js"></script>
+        <script src="js/operation/subtraction.js"></script>
+        <script src="js/operation/multiplication.js"></script>
+        <script src="js/operation/division.js"></script>
+        <script src="js/operation/modulo.js"></script>
+        <script src="js/operation/exponentiation.js"></script>
+    </body>
 </html>
+
+<!-- 
+<nav>
+    <div class="title">Turing Machine</div>
+    <ul class="nav-list">
+        <li><a href="index.html">2 angka</a></li>
+        <li><a href="fact.html">Faktorial</a></li>
+        <li><a href="log.html">Logaritma</a></li>
+    </ul>
+</nav>
+-->

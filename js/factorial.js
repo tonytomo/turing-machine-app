@@ -1,8 +1,6 @@
 var nf = document.getElementById('nf'); // Factorial
 
-var i; // iteration for loop
-var crAct; // Current active block
-var it; // Moves iteration, ++ kekanan, -- kekiri
+var moveDirection; // Moves iteration, ++ kekanan, -- kekiri
 var state; // State
 
 var looper; // Auto moves
@@ -28,7 +26,7 @@ function doFact() {
 
     // Jika input negatif
     if (nf.value < 0) {
-      addNotif('Input negatif!');
+      addLog('Input negatif!');
     } else {
       // Enable control
       enableFact(0);
@@ -42,7 +40,7 @@ function doFact() {
     factLine.push(new Blockfact('B'));
     factLine.push(new Blockfact('B'));
     factTmLine.childNodes[1].className += ' active';
-    it = 2;
+    moveDirection = 2;
     state = 0;
 
     // Jika Nilainya 0
@@ -51,7 +49,7 @@ function doFact() {
     }
     // Jika lbih dari 0
     else {
-      for (i = 0; i < nf.value; i++) {
+      for (let i = 0; i < nf.value; i++) {
         factLine.push(new Blockfact('1'));
       }
     }
@@ -102,9 +100,9 @@ function doFactNext() {
   // Jika TM sudah terisi
   if (factLine[0]) {
     // Deactivate block
-    crAct = document.getElementsByClassName('active');
-    for (i = 0; i < crAct.length; i++) {
-      crAct[i].className = crAct[i].className.replace(' active', '');
+    let activeBlock = document.getElementsByClassName('active');
+    for (let i = 0; i < activeBlock.length; i++) {
+      activeBlock[i].className = activeBlock[i].className.replace(' active', '');
     }
 
     done = 0;
@@ -184,12 +182,12 @@ function doFactNext() {
 
     // STATE 21 (FINAL STATE)
     if (state == 21) {
-      // Selesai
+      // Done!
       stopFactAuto();
-      factTmLine.childNodes[it].scrollIntoView(false);
+      factTmLine.childNodes[moveDirection].scrollIntoView(false);
 
       // Add notif
-      addNotif('Selesai');
+      addLog('Done!');
 
       // Enable control
       enableFact(2);
@@ -222,7 +220,7 @@ function doFactClear() {
   clearInterval(looper);
 
   // Add notif
-  addNotif('-');
+  addLog('-');
 
   // Change ans field
   var ansField = document.getElementById('factAns');
@@ -260,6 +258,6 @@ function disableFact(index) {
 }
 
 // Tambah notif
-function addNotif(pesan) {
+function addLog(pesan) {
   notif.textContent = pesan;
 }

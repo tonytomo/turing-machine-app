@@ -1,127 +1,205 @@
+:root {
+    --black-900: #000000;
+    --black-800: #111111;
+    --black-700: #222222;
+    --black-600: #333333;
+    --black-500: #444444;
+    --black-400: #555555;
+    --black-300: #666666;
+    --black-200: #777777;
+    --black-100: #888888;
+    --black-50: #aaaaaa;
+    --black-0: #ffffff;
+    --green: #00ff00;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 15px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #333;
+    background: var(--black-500);
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    background: var(--black-300);
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: #111;
-    font-family: sans-serif;
-}
-
-nav {
-    display: flex;
-    flex-direction: row;
-    background-color: #222;
-}
-nav * {
-    font-family: 'Courier New', Courier, monospace;
-}
-.title {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    padding-left: 1em;
-}
-.nav-list {
-    margin-left: auto;
-    list-style: none;
-    display: flex;
-    padding-right: 1em;
-}
-.nav-list a {
-    margin: 0;
-    color: #fff;
-    text-decoration: none;
-    padding: 1em 1.5em;
-    transition-duration: 200ms;
-}
-.nav-list a:hover {
-    border-bottom: 3px inset #0091ff;
 }
 
 .container {
-    margin: 1em 3em;
-    padding: 2em 1em;
-    text-align: center;
-
-    border-left: 3px solid #0091ff;
-    border-radius: 0 10px 10px 0;
-
-    background-color: #222;
-    box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--black-600);
+    font-family: "Poppins", sans-serif;
 }
 
 .form-wrapper {
+    padding: 10px 30px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color: var(--black-700);
+    border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-indent: 1px;
+    text-overflow: "";
+}
+
+.form-wrapper > input,
+.form-wrapper > select,
+.form-wrapper > button {
+    text-align: center;
+    color: var(--black-0);
+    outline: none;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+}
+
+.form-wrapper > input {
+    width: 2ch;
+    font-size: 16pt;
+    background-color: transparent;
+}
+
+.form-wrapper > select {
+    width: 3ch;
+    font-size: 20pt;
+    background-color: var(--black-700);
+    border-bottom: var(--black-500) 1px solid;
+}
+
+.form-wrapper > button {
+    margin: 0 20px;
+    padding: 0.5em 1em;
+    max-width: 100px;
+    height: 50px;
+    font-size: 15pt;
+    border-radius: 5px;
+    background-color: var(--black-600);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-wrapper > button:hover:enabled {
+    background-color: var(--black-400);
+}
+
+.form-wrapper > button:disabled {
+    color: var(--black-900);
+}
+
+.tm-container {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 200px;
+    width: 90%;
+}
+
+.tm-wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 1em;
-}
-.form-wrapper > * {
-    margin: 0;
-    padding: .5em 1em;
-    font-size: 15pt;
-
-    background-color: #444;
-    color: #fff;
-
-    border: none;
-    outline: none;
+    gap: 5px;
+    min-width: 100%;
+    height: auto;
     border-radius: 5px;
+}
+
+.tm-wrapper > p {
+    padding: 5px 10px;
+    color: var(--black-300);
+    border: var(--black-500) 1px solid;
+    border-radius: 5px;
+    font-size: 20pt;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+}
+
+.active {
+    color: var(--black-0) !important;
+}
+
+.answer {
+    border: var(--green) 1px solid !important;
+    color: var(--black-0) !important;
+}
+
+.controller-wrapper {
+    padding: 10px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    max-width: 80%;
+    background-color: var(--black-700);
+    border-radius: 10px;
+}
+
+.controller-wrapper > input,
+.controller-wrapper > select,
+.controller-wrapper > button {
+    text-align: center;
+    color: var(--black-0);
+    outline: none;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+}
+
+.controller-wrapper > input {
+    width: 15ch;
+    font-size: 12pt;
+    background-color: transparent;
+}
+
+.controller-wrapper > button {
+    padding: 0.5em 1em;
+    max-width: 100px;
+    height: 50px;
+    font-size: 15pt;
+    border-radius: 5px;
+    background-color: var(--black-600);
     box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
 }
-.form-wrapper > *:focus {
-    background-color: #555;
-}
-.form-wrapper button:hover:enabled {
-    cursor: pointer;
-    background-color: #0091ff;
-}
-.form-wrapper > button:disabled {
-    color: #333;
-}
-.form-wrapper > h4 {
-    width: 15ch;
+
+.controller-wrapper > button:hover:enabled {
+    background-color: var(--black-400);
 }
 
-.tm-wrapper {
-    max-width: 1200px;
-    min-height: 80px;
-    overflow: auto;
-
-    border-top: 1px solid #666;
-    border-bottom: 1px solid #666;
-
-    margin: 2em auto;
-    padding: 1em 0 0;
-    position: relative;
-    display: flex;
-    gap: 5px;
-    align-items: flex-start;
-    justify-content: start;
-}
-
-/* TM element */
-.tm-wrapper > * {
-    margin: 0;
-    padding: .5em 1em;
-    font-size: 20pt;
-    background-color: #444;
-    color: #fff;
-    border-radius: 5px;
-}
-.result {
-    background-color: #643a3a;
-}
-.active {
-    background-color: #555;
+.controller-wrapper > button:disabled {
+    color: var(--black-600);
+    background-color: var(--black-800);
 }

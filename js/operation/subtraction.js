@@ -1,11 +1,11 @@
-function subMove() {
-    // Write here...
-    // Jika TM sudah terisi
-    if (opsLine[0]) {
-        // Deactivate block
-        crAct = document.getElementsByClassName("active");
-        for (i = 0; i < crAct.length; i++) {
-            crAct[i].className = crAct[i].className.replace(" active", "");
+function subtraction() {
+    if (blocks[0]) {
+        const activeBlock = document.getElementsByClassName("active");
+        for (let i = 0; i < activeBlock.length; i++) {
+            activeBlock[i].className = activeBlock[i].className.replace(
+                "active",
+                ""
+            );
         }
         done = 0;
 
@@ -20,31 +20,35 @@ function subMove() {
         moving(4, 4, "0", "0", 0);
         moving(4, 0, "X", "X", 1);
         moving(5, 5, "X", "B", 1);
+        moving(5, 5, "B", "B", 0);
+        moving(5, 6, "C", "B", 0);
         moving(5, 6, "0", "0", 0);
         moving(6, 6, "B", "B", 0);
+        moving(6, 7, "X", "B", 0);
         moving(6, 7, "C", "B", 0);
         moving(7, 7, "X", "B", 0);
         moving(7, 8, "B", "B", 1);
 
         // STATE 8 (FINAL STATE)
         if (state == 8) {
-            // Selesai
-            stopOpsAuto();
-            opsTmLine.childNodes[opsLine.length - 3].scrollIntoView(false);
+            // Done!
+            halt();
+            visualBox.childNodes[blocks.length - 3].scrollIntoView(false);
 
             // Add notif
-            addNotif('Selesai');
+            addLog("Done!");
 
             // Enable control
-            enableOps(2);
+            enableControl("clearBox");
 
             // Disable control
-            disableOps(0);
-            disableOps(1);
-            disableOps(3);
-            
+            disableControl("speed");
+            disableControl("auto");
+            disableControl("halt");
+            disableControl("next");
+
             // Show answer in decimal
-            showOpsAns();
+            show();
         }
     }
 }

@@ -1,8 +1,6 @@
 var nl = document.getElementById('nl'); // Logaritma biner
 
-var i; // iteration for loop
-var crAct; // Current active block
-var it; // Moves iteration, ++ kekanan, -- kekiri
+var moveDirection; // Moves iteration, ++ kekanan, -- kekiri
 var state; // State
 
 var looper; // Auto moves
@@ -27,7 +25,7 @@ function doLog() {
 
     // Jika input negatif
     if (nl.value < 0) {
-      addNotif("Input negatif!");
+      addLog("Input negatif!");
     } else {
       // Enable control
       enableLog(0);
@@ -41,11 +39,11 @@ function doLog() {
     logLine.push(new Blocklog('B'));
     logLine.push(new Blocklog('B'));
     logTmLine.childNodes[1].className += ' active';
-    it = 2;
+    moveDirection = 2;
     state = 0;
 
     // Ubah log(n) ke unary
-    for (i = 0; i < nl.value; i++) {
+    for (let i = 0; i < nl.value; i++) {
       logLine.push(new Blocklog('1'));
     }
 
@@ -90,9 +88,9 @@ function doLogNext() {
   // Tulis dibawah ini...
   if (logLine[0]) {
     // Deactivate block
-    crAct = document.getElementsByClassName('active');
-    for (i = 0; i < crAct.length; i++) {
-      crAct[i].className = crAct[i].className.replace(' active', '');
+    let activeBlock = document.getElementsByClassName('active');
+    for (let i = 0; i < activeBlock.length; i++) {
+      activeBlock[i].className = activeBlock[i].className.replace(' active', '');
     }
 
     done = 0;
@@ -132,12 +130,12 @@ function doLogNext() {
 
     // STATE 12 (FINAL STATE)
     if (state == 12) {
-      // Selesai
+      // Done!
       stopLogAuto();
-      logTmLine.childNodes[it].scrollIntoView(false);
+      logTmLine.childNodes[moveDirection].scrollIntoView(false);
 
       // Add notif
-      addNotif('Selesai');
+      addLog('Done!');
 
       // Enable control
       enableLog(2);
@@ -170,7 +168,7 @@ function doLogClear() {
   clearInterval(looper);
 
   // Add notif
-  addNotif('-');
+  addLog('-');
 
   // Change ans field
   var ansField = document.getElementById('logAns');
@@ -199,6 +197,6 @@ function disableLog(index) {
 }
 
 // Tambah notif
-function addNotif(pesan) {
+function addLog(pesan) {
   notif.textContent = pesan;
 }
