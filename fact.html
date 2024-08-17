@@ -1,63 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Turing Machine Sim</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turing Machine</title>
+        <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/css.gg@2.1.1/icons/icons.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Taprom&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <body>
+        <section class="container">
+            <!-- Background animation -->
+            <p class="bg-title">Factorial</p>
+            <div class="spinning-box box-1"></div>
+            <div class="spinning-box box-2"></div>
 
-<body>
-    <!-- Navbar -->
-    <nav>
-        <!-- Title -->
-        <div class="title">
-            Turing Machine
-        </div>
-        <!-- Navigation -->
-        <ul class="nav-list">
-            <li><a href="index.html">2 angka</a></li>
-            <li><a href="fact.html">Faktorial</a></li>
-            <li><a href="log.html">Logaritma</a></li>
-        </ul>
-    </nav>
-    
-    <!-- ******************* -->
-    <!-- OPERASI FAKTORIAL -->
-    <!-- ******************* -->
-    <section class="container">
-        <!-- faktorial -->
-        <div class="form-wrapper">
-            <input type="number" name="nf" id="nf">
-            <h3>!</h3>
-            <button onmousedown="doFact()">=</button>
-            <h3 id="factAns">0</h3>
-        </div>
+            <!-- Navigation -->
+            <div class="nav nav-left"><a href="log.html">Logarithm</a></div>
+            <div class="nav nav-right"><a href="index.html">Arithmetic</a></div>
 
-        <!-- TM -->
-        <div class="tm-wrapper" id="factTm">
-            <!-- Tempat mesin turing -->
-            <!-- Berisi komponen persegi dengan nilai -->
-            <!-- Dibuat dengan js -->
-        </div>
+            <!-- Factorial -->
+            <div class="form-wrapper">
+                <input
+                    type="text"
+                    name="operand"
+                    id="operand"
+                    placeholder="0"
+                />
+                <input readonly type="text" value="!" />
+                <button onmousedown="generate()">=</button>
+                <input
+                    readonly
+                    type="text"
+                    title="result"
+                    id="result"
+                    value="..."
+                />
+            </div>
 
-        <!-- Controller -->
-        <div class="form-wrapper">
-            <button disabled onmousedown="doFactAuto()" class="factcontrol">Auto</button>
-            <button disabled onmousedown="stopFactAuto()" class="factcontrol">Stop</button>
-            <button disabled onmousedown="doFactClear()" class="factcontrol">Clear</button>
-            <button disabled onmousedown="doFactNext()" class="factcontrol">Next move</button>
-            <h4 id="notif">-</h4>
-        </div>
-    </section>
+            <!-- TM -->
+            <div class="tm-wrapper" id="factTm">
+                <!-- Tempat mesin turing -->
+                <!-- Berisi komponen persegi dengan nilai -->
+                <!-- Dibuat dengan js -->
+            </div>
 
-    <!-- Scripts -->
-    <script src="js/fact.js"></script>
-    <script src="js/comp.js"></script>
-    <script src="js/fun.js"></script>
-</body>
+            <!-- Controller -->
+            <div class="controller-wrapper">
+                <!-- button to toggle speed -->
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="speedToggle()"
+                    id="speed"
+                >
+                    1x
+                </button>
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="factPlay()"
+                    id="auto"
+                >
+                    <i class="gg-play-button-o"></i>
+                </button>
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="factHalt()"
+                    id="halt"
+                >
+                    <i class="gg-play-stop-o"></i>
+                </button>
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="factClearBox()"
+                    id="clearBox"
+                >
+                    <i class="gg-trash"></i>
+                </button>
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="factNext()"
+                    id="next"
+                >
+                    <i class="gg-arrow-right"></i>
+                </button>
+                <input readonly type="text" title="Log" id="log" value="..." />
+            </div>
+        </section>
 
+        <!-- Scripts -->
+        <script src="js/factorial.js"></script>
+        <script src="js/components.js"></script>
+        <script src="js/functions.js"></script>
+    </body>
 </html>

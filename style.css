@@ -47,6 +47,75 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+.bg-title {
+    position: absolute;
+    top: 25%;
+    color: var(--black-0);
+    font-family: "Poppins", sans-serif;
+    font-size: 50pt;
+    font-weight: 100;
+    opacity: 0.1;
+}
+
+.spinning-box {
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    border: var(--black-500) 1px solid;
+    opacity: 0.5;
+}
+
+.box-1 {
+    animation: spinAndResize 5s linear infinite;
+}
+
+.box-2 {
+    animation: spinAndResize 5s linear infinite reverse;
+}
+
+@keyframes spinAndResize {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.nav {
+    position: absolute;
+    top: 0;
+    background-color: var(--black-700);
+}
+
+.nav:hover {
+    background-color: var(--black-800);
+}
+
+.nav-left {
+    left: 0;
+    padding: 10px 40px 10px 10px;
+    border-radius: 0 0 100px 0;
+}
+
+.nav-right {
+    right: 0;
+    padding: 10px 10px 10px 40px;
+    border-radius: 0 0 0 100px;
+}
+
+.nav > a {
+    color: var(--black-0);
+    font-size: 14pt;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+}
+
 .form-wrapper {
     padding: 10px 30px;
     margin-top: 20px;
@@ -75,13 +144,20 @@ select {
 
 .form-wrapper > input,
 .form-wrapper > select,
-.form-wrapper > button {
+.form-wrapper > button,
+.long-input {
     text-align: center;
     color: var(--black-0);
     outline: none;
     border: none;
     font-family: "Poppins", sans-serif;
     font-weight: 100;
+}
+
+.long-input {
+    margin: 0;
+    padding: 0;
+    width: 5ch !important;
 }
 
 .form-wrapper > input {
@@ -202,4 +278,10 @@ select {
 .controller-wrapper > button:disabled {
     color: var(--black-600);
     background-color: var(--black-800);
+}
+
+@media (max-width: 768px) {
+    .form-wrapper {
+        margin-top: 80px;
+    }
 }

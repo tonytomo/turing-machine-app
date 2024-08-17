@@ -1,263 +1,290 @@
-var nf = document.getElementById('nf'); // Factorial
+const operand = document.getElementById("operand"); // Factorial
 
-var moveDirection; // Moves iteration, ++ kekanan, -- kekiri
-var state; // State
+var moveDirection; // Moves iteration, ++ right, -- left
+var state; // State for turing machine
+var looper; // Animation
+let speed = 100; // Speed for auto moves in ms
 
-var looper; // Auto moves
-var done; // Flag done
-var f = []; // Factorial
+// Blocks for Turing Machine
+var blocks = [];
 
-// List untuk turing machine
-var factLine = [];
 // Turing machine
-var factTmLine = document.getElementById('factTm');
+var visualBox = document.getElementById("factTm");
 
-// Selector controller
-const factcontrol = document.querySelectorAll('.factcontrol');
+// Log box
+const log = document.getElementById("log");
 
 // After click = button
-function doFact() {
-  // Write here...
+function generate() {
+    // If input field is filled
+    let operandValue = parseInt(operand.value);
 
-  //jika input field terisi
-  if (nf.value) {
-    // CLear
-    doFactClear();
+    //jika input field terisi
+    if (operandValue) {
+        // CLear
+        factClearBox();
 
-    // Jika input negatif
-    if (nf.value < 0) {
-      addLog('Input negatif!');
-    } else {
-      // Enable control
-      enableFact(0);
-      enableFact(2);
-      enableFact(3);
+        // Jika input negatif
+        if (operandValue < 0) {
+            addLog("Negative input!");
+        } else {
+            // Enable control
+            enableControl("speed");
+            enableControl("auto");
+            enableControl("clearBox");
+            enableControl("next");
 
-      // Disable control
-      disableFact(1);
+            // Disable control
+            disableControl("halt");
+        }
+
+        blocks.push(new Blockfact("B"));
+        blocks.push(new Blockfact("B"));
+        visualBox.childNodes[1].className += " active";
+        moveDirection = 2;
+        state = 0;
+
+        // Jika Nilainya 0
+        if (operandValue == 0) {
+            blocks.push(new Blockfact("0"));
+        }
+        // Jika lbih dari 0
+        else {
+            for (let i = 0; i < operandValue; i++) {
+                blocks.push(new Blockfact("1"));
+            }
+        }
+
+        // Limiter
+        blocks.push(new Blockfact("!"));
+        blocks.push(new Blockfact("="));
+
+        blocks.push(new Blockfact("B"));
+        blocks.push(new Blockfact("B"));
     }
-
-    factLine.push(new Blockfact('B'));
-    factLine.push(new Blockfact('B'));
-    factTmLine.childNodes[1].className += ' active';
-    moveDirection = 2;
-    state = 0;
-
-    // Jika Nilainya 0
-    if (nf.value == 0) {
-      factLine.push(new Blockfact('0'));
-    }
-    // Jika lbih dari 0
-    else {
-      for (let i = 0; i < nf.value; i++) {
-        factLine.push(new Blockfact('1'));
-      }
-    }
-
-    // Limiter
-    factLine.push(new Blockfact('!'));
-    factLine.push(new Blockfact('='));
-
-    factLine.push(new Blockfact('B'));
-    factLine.push(new Blockfact('B'));
-  }
 }
 
 // Auto move
-function doFactAuto() {
-  // Write here...
-  looper = setInterval(doFactNext, 100);
-  // Enable control
-  enableFact(1);
+function factPlay() {
+    // Enable control
+    enableControl("halt");
 
-  // Disable control
-  disableFact(0);
-  disableFact(2);
-  disableFact(3);
+    // Disable control
+    disableControl("speed");
+    disableControl("auto");
+    disableControl("clearBox");
+    disableControl("next");
+
+    looper = setInterval(factNext, speed);
 }
 
 // Stop auto moves
-function stopFactAuto() {
-  // Enable control
-  enableFact(0);
-  enableFact(2);
-  enableFact(3);
+function factHalt() {
+    // Enable control
+    enableControl("speed");
+    enableControl("auto");
+    enableControl("clearBox");
+    enableControl("next");
 
-  // Disable control
-  disableFact(1);
+    // Disable control
+    disableControl("halt");
 
-  // Clear interval
-  clearInterval(looper);
+    // Clear interval
+    clearInterval(looper);
 }
 
 // Next move
-function doFactNext() {
-  // *******************************
-  //            FAKTORIAL
-  //      Tempat untuk tiap state
-  // *******************************
-  // Tulis dibawah ini...
-  // Jika TM sudah terisi
-  if (factLine[0]) {
-    // Deactivate block
-    let activeBlock = document.getElementsByClassName('active');
-    for (let i = 0; i < activeBlock.length; i++) {
-      activeBlock[i].className = activeBlock[i].className.replace(' active', '');
+function factNext() {
+    // *******************************
+    //            FAKTORIAL
+    //      Tempat untuk tiap state
+    // *******************************
+    // Tulis dibawah ini...
+    // Jika TM sudah terisi
+    if (blocks[0]) {
+        // Deactivate block
+        let activeBlock = document.getElementsByClassName("active");
+        for (let i = 0; i < activeBlock.length; i++) {
+            activeBlock[i].className = activeBlock[i].className.replace(
+                " active",
+                ""
+            );
+        }
+
+        done = 0;
+
+        movingf(0, 1, "1", "X", 1);
+        movingf(0, 18, "0", "0", 1);
+        movingf(0, 3, "!", "!", 1);
+        movingf(1, 1, "1", "1", 1);
+        movingf(1, 1, "!", "!", 1);
+        movingf(1, 1, "=", "=", 1);
+        movingf(1, 2, "B", "1", 0, 1);
+        movingf(2, 2, "1", "1", 0);
+        movingf(2, 2, "!", "!", 0);
+        movingf(2, 2, "=", "=", 0);
+        movingf(2, 0, "X", "X", 1);
+        movingf(3, 3, "1", "1", 1);
+        movingf(3, 3, "!", "!", 1);
+        movingf(3, 3, "=", "=", 1);
+        movingf(3, 4, "B", "*", 0, 1);
+        movingf(4, 4, "1", "1", 0);
+        movingf(4, 4, "!", "!", 0);
+        movingf(4, 4, "=", "=", 0);
+        movingf(4, 4, "X", "X", 0);
+        movingf(4, 6, "Z", "Z", 1);
+        movingf(4, 5, "B", "B", 1);
+        movingf(5, 12, "X", "Y", 1);
+        movingf(6, 13, "!", "!", 1);
+        movingf(6, 7, "X", "Z", 1);
+        movingf(7, 7, "1", "1", 1);
+        movingf(7, 7, "X", "X", 1);
+        movingf(7, 8, "!", "!", 1);
+        movingf(8, 8, "=", "=", 1);
+        movingf(8, 9, "1", "X", 1);
+        movingf(8, 11, "*", "*", 0);
+        movingf(9, 9, "1", "1", 1);
+        movingf(9, 9, "*", "*", 1);
+        movingf(9, 10, "B", "1", 0, 1);
+        movingf(10, 10, "1", "1", 0);
+        movingf(10, 10, "*", "*", 0);
+        movingf(10, 8, "X", "X", 1);
+        movingf(11, 11, "X", "1", 0);
+        movingf(11, 4, "=", "=", 0);
+        movingf(12, 15, "!", "!", 1);
+        movingf(12, 6, "X", "Y", 1);
+        movingf(13, 13, "1", "1", 1);
+        movingf(13, 13, "=", "=", 1);
+        movingf(13, 13, "*", "1", 1);
+        movingf(13, 18, "B", "B", 0);
+        movingf(14, 14, "1", "1", 0);
+        movingf(14, 14, "!", "!", 0);
+        movingf(14, 14, "=", "=", 0);
+        movingf(14, 14, "Z", "X", 0);
+        movingf(14, 15, "Y", "Y", 1);
+        movingf(15, 15, "1", "1", 1);
+        movingf(15, 15, "!", "!", 1);
+        movingf(15, 15, "=", "=", 1);
+        movingf(15, 15, "X", "X", 1);
+        movingf(15, 16, "B", "*", 0, 1);
+        movingf(15, 19, "*", "B", 0);
+        movingf(16, 16, "1", "1", 0);
+        movingf(16, 16, "!", "!", 0);
+        movingf(16, 16, "=", "=", 0);
+        movingf(16, 16, "X", "X", 0);
+        movingf(16, 17, "Y", "Y", 1);
+        movingf(17, 15, "!", "!", 1);
+        movingf(17, 6, "X", "Y", 1);
+        movingf(18, 14, "1", "B", 0);
+        movingf(18, 18, "!", "!", 1);
+        movingf(18, 18, "=", "=", 1);
+        movingf(18, 19, "B", "1", 0, 1);
+        movingf(19, 19, "1", "1", 0);
+        movingf(19, 20, "=", "B", 0);
+        movingf(20, 20, "!", "B", 0);
+        movingf(20, 20, "Y", "B", 0);
+        movingf(20, 20, "0", "B", 0);
+        movingf(20, 21, "B", "B", 1);
+
+        // STATE 21 (FINAL STATE)
+        if (state == 21) {
+            // Done!
+            factHalt();
+            visualBox.childNodes[moveDirection].scrollIntoView(false);
+
+            // Add notif
+            addLog("Done!");
+
+            // Enable control
+            enableControl("clearBox");
+
+            // Disable control
+            disableControl("speed");
+            disableControl("auto");
+            disableControl("halt");
+            disableControl("next");
+
+            // Show answer in decimal
+            show();
+        }
     }
-
-    done = 0;
-
-    movingf(0, 1, '1', 'X', 1);
-    movingf(0, 18, '0', '0', 1);
-    movingf(0, 3, '!', '!', 1);
-    movingf(1, 1, '1', '1', 1);
-    movingf(1, 1, '!', '!', 1);
-    movingf(1, 1, '=', '=', 1);
-    movingf(1, 2, 'B', '1', 0, 1);
-    movingf(2, 2, '1', '1', 0);
-    movingf(2, 2, '!', '!', 0);
-    movingf(2, 2, '=', '=', 0);
-    movingf(2, 0, 'X', 'X', 1);
-    movingf(3, 3, '1', '1', 1);
-    movingf(3, 3, '!', '!', 1);
-    movingf(3, 3, '=', '=', 1);
-    movingf(3, 4, 'B', '*', 0, 1);
-    movingf(4, 4, '1', '1', 0);
-    movingf(4, 4, '!', '!', 0);
-    movingf(4, 4, '=', '=', 0);
-    movingf(4, 4, 'X', 'X', 0);
-    movingf(4, 6, 'Z', 'Z', 1);
-    movingf(4, 5, 'B', 'B', 1);
-    movingf(5, 12, 'X', 'Y', 1);
-    movingf(6, 13, '!', '!', 1);
-    movingf(6, 7, 'X', 'Z', 1);
-    movingf(7, 7, '1', '1', 1);
-    movingf(7, 7, 'X', 'X', 1);
-    movingf(7, 8, '!', '!', 1);
-    movingf(8, 8, '=', '=', 1);
-    movingf(8, 9, '1', 'X', 1);
-    movingf(8, 11, '*', '*', 0);
-    movingf(9, 9, '1', '1', 1);
-    movingf(9, 9, '*', '*', 1);
-    movingf(9, 10, 'B', '1', 0, 1);
-    movingf(10, 10, '1', '1', 0);
-    movingf(10, 10, '*', '*', 0);
-    movingf(10, 8, 'X', 'X', 1);
-    movingf(11, 11, 'X', '1', 0);
-    movingf(11, 4, '=', '=', 0);
-    movingf(12, 15, '!', '!', 1);
-    movingf(12, 6, 'X', 'Y', 1);
-    movingf(13, 13, '1', '1', 1);
-    movingf(13, 13, '=', '=', 1);
-    movingf(13, 13, '*', '1', 1);
-    movingf(13, 18, 'B', 'B', 0);
-    movingf(14, 14, '1', '1', 0);
-    movingf(14, 14, '!', '!', 0);
-    movingf(14, 14, '=', '=', 0);
-    movingf(14, 14, 'Z', 'X', 0);
-    movingf(14, 15, 'Y', 'Y', 1);
-    movingf(15, 15, '1', '1', 1);
-    movingf(15, 15, '!', '!', 1);
-    movingf(15, 15, '=', '=', 1);
-    movingf(15, 15, 'X', 'X', 1);
-    movingf(15, 16, 'B', '*', 0, 1);
-    movingf(15, 19, '*', 'B', 0);
-    movingf(16, 16, '1', '1', 0);
-    movingf(16, 16, '!', '!', 0);
-    movingf(16, 16, '=', '=', 0);
-    movingf(16, 16, 'X', 'X', 0);
-    movingf(16, 17, 'Y', 'Y', 1);
-    movingf(17, 15, '!', '!', 1);
-    movingf(17, 6, 'X', 'Y', 1);
-    movingf(18, 14, '1', 'B', 0);
-    movingf(18, 18, '!', '!', 1);
-    movingf(18, 18, '=', '=', 1);
-    movingf(18, 19, 'B', '1', 0, 1);
-    movingf(19, 19, '1', '1', 0);
-    movingf(19, 20, '=', 'B', 0);
-    movingf(20, 20, '!', 'B', 0);
-    movingf(20, 20, 'Y', 'B', 0);
-    movingf(20, 20, '0', 'B', 0);
-    movingf(20, 21, 'B', 'B', 1);
-
-    // STATE 21 (FINAL STATE)
-    if (state == 21) {
-      // Done!
-      stopFactAuto();
-      factTmLine.childNodes[moveDirection].scrollIntoView(false);
-
-      // Add notif
-      addLog('Done!');
-
-      // Enable control
-      enableFact(2);
-
-      // Disable control
-      disableFact(0);
-      disableFact(1);
-      disableFact(3);
-
-      // Show answer in decimal
-      showFactAns();
-    }
-  }
 }
 
 // Clear TM
-function doFactClear() {
-  // Write here...
-  // Declare list to null and factLine to null
-  factTmLine.innerHTML = '';
-  factLine = [];
+function factClearBox() {
+    // Write here...
+    // Declare list to null and blocks to null
+    visualBox.innerHTML = "";
+    blocks = [];
 
-  // Disable all control
-  disableFact(0);
-  disableFact(1);
-  disableFact(2);
-  disableFact(3);
+    // Disable all control
+    disableControl("speed");
+    disableControl("auto");
+    disableControl("halt");
+    disableControl("clearBox");
+    disableControl("next");
 
-  // Clear interval
-  clearInterval(looper);
+    // Clear interval
+    clearInterval(looper);
 
-  // Add notif
-  addLog('-');
+    // Add log
+    addLog("...");
 
-  // Change ans field
-  var ansField = document.getElementById('factAns');
-  ansField.textContent = 0;
+    // Change ans field
+    var resultBox = document.getElementById("result");
+    resultBox.value = "...";
 }
 
 // Show answer
-function showFactAns() {
-  // Write here...
-  var ans = 0; // Jawaban
+function show() {
+    let ans = 0;
 
-  // ans faktorial
-  ans = factorial(nf.value);
+    const children = Array.from(visualBox.childNodes);
 
-  // Show answer on ans field
-  var ansField = document.getElementById('factAns');
-  ansField.textContent = ans;
-}
+    for (let i = 0; i < children.length; i++) {
+        if (children[i].innerHTML == "1") {
+            children[i].className += " answer";
+            ans++;
+        }
+    }
 
-// Faktorial
-function factorial(n) {
-  if (n == 0 || n == 1) return 1;
-  if (f[n] > 0) return f[n];
-  return (f[n] = factorial(n - 1) * n);
+    // Show answer on ans field
+    const resultBox = document.getElementById("result");
+    resultBox.value = ans;
 }
 
 // Enable controller
-function enableFact(index) {
-  factcontrol[index].disabled = false;
+function enableControl(elementId = "") {
+    document.getElementById(elementId).disabled = false;
 }
 
 // Disable controller
-function disableFact(index) {
-  factcontrol[index].disabled = true;
+function disableControl(elementId = "") {
+    document.getElementById(elementId).disabled = true;
 }
 
-// Tambah notif
-function addLog(pesan) {
-  notif.textContent = pesan;
+// Add log
+function addLog(logMessage = "") {
+    log.value = logMessage;
+}
+
+// Toggle speed
+function speedToggle() {
+    const speedButton = document.getElementById("speed");
+    if (speed == 100) {
+        speed = 50;
+        speedButton.textContent = "2x";
+    } else if (speed == 50) {
+        speed = 20;
+        speedButton.textContent = "5x";
+    } else if (speed == 20) {
+        speed = 10;
+        speedButton.textContent = "10x";
+    } else if (speed == 10) {
+        speed = 5;
+        speedButton.textContent = "20x";
+    } else {
+        speed = 100;
+        speedButton.textContent = "1x";
+    }
 }

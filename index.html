@@ -20,6 +20,15 @@
     <body>
         <!-- Arithmetic Operations -->
         <section class="container">
+            <!-- Background animation -->
+            <p class="bg-title">Arithmetics</p>
+            <div class="spinning-box box-1"></div>
+            <div class="spinning-box box-2"></div>
+
+            <!-- Navigation -->
+            <div class="nav nav-left"><a href="fact.html">Factorial</a></div>
+            <div class="nav nav-right"><a href="log.html">Logarithm</a></div>
+
             <!-- Form Input -->
             <div class="form-wrapper">
                 <input
@@ -66,7 +75,12 @@
             <!-- Controller -->
             <div class="controller-wrapper">
                 <!-- button to toggle speed -->
-                <button disabled type="button" onmousedown="speedToggle()" id="speed">
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="speedToggle()"
+                    id="speed"
+                >
                     1x
                 </button>
                 <button disabled type="button" onmousedown="play()" id="auto">

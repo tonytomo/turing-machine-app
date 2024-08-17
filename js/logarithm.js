@@ -1,202 +1,232 @@
-var nl = document.getElementById('nl'); // Logaritma biner
+const operand = document.getElementById("operand"); // Logaritma biner
 
 var moveDirection; // Moves iteration, ++ kekanan, -- kekiri
 var state; // State
-
 var looper; // Auto moves
-var done; // Flag done
+let speed = 100; // Kecepatan auto moves dalam ms
 
 // List untuk turing machine
-var logLine = [];
-// Turing machine
-var logTmLine = document.getElementById('logTm');
+var blocks = [];
 
-// Selector controller
-const logcontrol = document.querySelectorAll('.logcontrol');
+// Turing machine
+var visualBox = document.getElementById("logTm");
 
 // After click = button
-function doLog() {
-  // Write here...
-  //logLine.push(new Blocklog('A'));
+function generate() {
+    if (operand.value) {
+        // CLear
+        logClearBox();
 
-  if (nl.value) {
-    // CLear
-    doLogClear();
+        // Jika input negatif
+        if (operand.value < 0) {
+            addLog("Negative input!");
+        } else {
+            // Enable control
+            enableControl("speed");
+            enableControl("auto");
+            enableControl("clearBox");
+            enableControl("next");
 
-    // Jika input negatif
-    if (nl.value < 0) {
-      addLog("Input negatif!");
-    } else {
-      // Enable control
-      enableLog(0);
-      enableLog(2);
-      enableLog(3);
+            // Disable control
+            disableControl("halt");
+        }
 
-      // Disable control
-      disableLog(1);
+        blocks.push(new Blocklog("B"));
+        blocks.push(new Blocklog("B"));
+        visualBox.childNodes[1].className += " active";
+        moveDirection = 2;
+        state = 0;
+
+        // Ubah log(n) ke unary
+        for (let i = 0; i < operand.value; i++) {
+            blocks.push(new Blocklog("1"));
+        }
+
+        blocks.push(new Blocklog("B"));
+        blocks.push(new Blocklog("B"));
     }
-
-    logLine.push(new Blocklog('B'));
-    logLine.push(new Blocklog('B'));
-    logTmLine.childNodes[1].className += ' active';
-    moveDirection = 2;
-    state = 0;
-
-    // Ubah log(n) ke unary
-    for (let i = 0; i < nl.value; i++) {
-      logLine.push(new Blocklog('1'));
-    }
-
-    logLine.push(new Blocklog('B'));
-    logLine.push(new Blocklog('B'));
-  }
 }
 
 // Auto move
-function doLogAuto() {
-  // Write here...
-  looper = setInterval(doLogNext, 100);
-  // Enable control
-  enableLog(1);
+function logPlay() {
+    // Enable control
+    enableControl("halt");
 
-  // Disable control
-  disableLog(0);
-  disableLog(2);
-  disableLog(3);
+    // Disable control
+    disableControl("speed");
+    disableControl("auto");
+    disableControl("clearBox");
+    disableControl("next");
+
+    looper = setInterval(logNext, speed); // do next move every 100ms
 }
 
 // Stop auto moves
-function stopLogAuto() {
-  // Enable control
-  enableLog(0);
-  enableLog(2);
-  enableLog(3);
+function logHalt() {
+    // Enable control
+    enableControl("speed");
+    enableControl("auto");
+    enableControl("clearBox");
+    enableControl("next");
 
-  // Disable control
-  disableLog(1);
+    // Disable control
+    disableControl("halt");
 
-  // Clear interval
-  clearInterval(looper);
+    // Clear interval
+    clearInterval(looper);
 }
 
 // Next move
-function doLogNext() {
-  // *******************************
-  //          LOGARITMA BINER
-  //      Tempat untuk tiap state
-  // *******************************
-  // Tulis dibawah ini...
-  if (logLine[0]) {
-    // Deactivate block
-    let activeBlock = document.getElementsByClassName('active');
-    for (let i = 0; i < activeBlock.length; i++) {
-      activeBlock[i].className = activeBlock[i].className.replace(' active', '');
+function logNext() {
+    // *******************************
+    //          LOGARITMA BINER
+    //      Tempat untuk tiap state
+    // *******************************
+    // Tulis dibawah ini...
+    if (blocks[0]) {
+        // Deactivate block
+        let activeBlock = document.getElementsByClassName("active");
+        for (let i = 0; i < activeBlock.length; i++) {
+            activeBlock[i].className = activeBlock[i].className.replace(
+                " active",
+                ""
+            );
+        }
+
+        done = 0;
+
+        movingl(0, 1, "1", "1", 1);
+        movingl(0, 12, "B", "B", 1);
+        movingl(1, 2, "1", "1", 1);
+        movingl(1, 11, "B", "B", 0);
+        movingl(2, 3, "1", "C", 1);
+        movingl(2, 11, "B", "B", 0);
+        movingl(3, 3, "C", "C", 1);
+        movingl(3, 4, "1", "C", 0);
+        movingl(3, 7, "B", "B", 0);
+        movingl(4, 4, "0", "0", 0);
+        movingl(4, 4, "1", "1", 0);
+        movingl(4, 4, "C", "C", 0);
+        movingl(4, 5, "B", "B", 1);
+        movingl(5, 5, "1", "0", 1);
+        movingl(5, 6, "0", "1", 1);
+        movingl(5, 6, "C", "1", 1);
+        movingl(6, 6, "0", "0", 1);
+        movingl(6, 6, "1", "1", 1);
+        movingl(6, 3, "C", "C", 1);
+        movingl(7, 7, "0", "0", 0);
+        movingl(7, 7, "1", "1", 0);
+        movingl(7, 7, "C", "B", 0);
+        movingl(7, 8, "B", "B", 1);
+        movingl(8, 8, "0", "1", 1);
+        movingl(8, 9, "1", "1", 1);
+        movingl(9, 9, "0", "1", 1);
+        movingl(9, 10, "1", "1", 1);
+        movingl(9, 11, "B", "B", 0);
+        movingl(10, 10, "0", "1", 1);
+        movingl(10, 10, "1", "1", 1);
+        movingl(10, 12, "B", "B", 0);
+        movingl(11, 12, "1", "B", "1");
+
+        // STATE 12 (FINAL STATE)
+        if (state == 12) {
+            // Done!
+            logHalt();
+            visualBox.childNodes[moveDirection].scrollIntoView(false);
+
+            // Add notif
+            addLog("Done!");
+
+            // Enable control
+            enableControl("clearBox");
+
+            // Disable control
+            disableControl("speed");
+            disableControl("auto");
+            disableControl("halt");
+            disableControl("next");
+
+            // Show answer in decimal
+            show();
+        }
     }
-
-    done = 0;
-
-    movingl(0, 1, '1', '1', 1);
-    movingl(0, 12, 'B', 'B', 1);
-    movingl(1, 2, '1', '1', 1);
-    movingl(1, 11, 'B', 'B', 0);
-    movingl(2, 3, '1', 'C', 1);
-    movingl(2, 11, 'B', 'B', 0);
-    movingl(3, 3, 'C', 'C', 1);
-    movingl(3, 4, '1', 'C', 0);
-    movingl(3, 7, 'B', 'B', 0);
-    movingl(4, 4, '0', '0', 0);
-    movingl(4, 4, '1', '1', 0);
-    movingl(4, 4, 'C', 'C', 0);
-    movingl(4, 5, 'B', 'B', 1);
-    movingl(5, 5, '1', '0', 1);
-    movingl(5, 6, '0', '1', 1);
-    movingl(5, 6, 'C', '1', 1);
-    movingl(6, 6, '0', '0', 1);
-    movingl(6, 6, '1', '1', 1);
-    movingl(6, 3, 'C', 'C', 1);
-    movingl(7, 7, '0', '0', 0);
-    movingl(7, 7, '1', '1', 0);
-    movingl(7, 7, 'C', 'B', 0);
-    movingl(7, 8, 'B', 'B', 1);
-    movingl(8, 8, '0', '1', 1);
-    movingl(8, 9, '1', '1', 1);
-    movingl(9, 9, '0', '1', 1);
-    movingl(9, 10, '1', '1', 1);
-    movingl(9, 11, 'B', 'B', 0);
-    movingl(10, 10, '0', '1', 1);
-    movingl(10, 10, '1', '1', 1);
-    movingl(10, 12, 'B', 'B', 0);
-    movingl(11, 12, '1', 'B', '1');
-
-    // STATE 12 (FINAL STATE)
-    if (state == 12) {
-      // Done!
-      stopLogAuto();
-      logTmLine.childNodes[moveDirection].scrollIntoView(false);
-
-      // Add notif
-      addLog('Done!');
-
-      // Enable control
-      enableLog(2);
-
-      // Disable control
-      disableLog(0);
-      disableLog(1);
-      disableLog(3);
-
-      // Show answer in decimal
-      showLogAns();
-    }
-  }
 }
 
 // Clear TM
-function doLogClear() {
-  // Write here...
-  // Declare list to null and LogLine to null
-  logTmLine.innerHTML = '';
-  logLine = [];
+function logClearBox() {
+    // Write here...
+    // Declare list to null and LogLine to null
+    visualBox.innerHTML = "";
+    blocks = [];
 
-  // Disable all control
-  disableLog(0);
-  disableLog(1);
-  disableLog(2);
-  disableLog(3);
+    // Disable all control
+    disableControl("speed");
+    disableControl("auto");
+    disableControl("halt");
+    disableControl("clearBox");
+    disableControl("next");
 
-  // Clear interval
-  clearInterval(looper);
+    // Clear interval
+    clearInterval(looper);
 
-  // Add notif
-  addLog('-');
+    // Add notif
+    addLog("...");
 
-  // Change ans field
-  var ansField = document.getElementById('logAns');
-  ansField.textContent = 0;
+    // Change ans field
+    var resultBox = document.getElementById("logAns");
+    resultBox.value = "...";
 }
 
 // Show answer
-function showLogAns() {
-  // Write here...
-  var ans = 0; // Jawaban
+function show() {
+    var ans = 0; // Jawaban
 
-  ans = Math.log2(nl.value);
+    const children = Array.from(visualBox.childNodes);
 
-  // Show answer on ans field
-  var ansField = document.getElementById('logAns');
-  ansField.textContent = ans;
+    for (let i = 0; i < children.length; i++) {
+        if (children[i].innerHTML == "1") {
+            children[i].className += " answer";
+            ans++;
+        }
+    }
+
+    // Show answer on ans field
+    var resultBox = document.getElementById("logAns");
+    resultBox.value = ans;
 }
+
 // Enable controller
-function enableLog(index) {
-  logcontrol[index].disabled = false;
+function enableControl(elementId = "") {
+    document.getElementById(elementId).disabled = false;
 }
 
 // Disable controller
-function disableLog(index) {
-  logcontrol[index].disabled = true;
+function disableControl(elementId = "") {
+    document.getElementById(elementId).disabled = true;
 }
 
-// Tambah notif
-function addLog(pesan) {
-  notif.textContent = pesan;
+// Add log
+function addLog(logMessage = "") {
+    log.value = logMessage;
+}
+
+// Toggle speed
+function speedToggle() {
+    const speedButton = document.getElementById("speed");
+    if (speed == 100) {
+        speed = 50;
+        speedButton.textContent = "2x";
+    } else if (speed == 50) {
+        speed = 20;
+        speedButton.textContent = "5x";
+    } else if (speed == 20) {
+        speed = 10;
+        speedButton.textContent = "10x";
+    } else if (speed == 10) {
+        speed = 5;
+        speedButton.textContent = "20x";
+    } else {
+        speed = 100;
+        speedButton.textContent = "1x";
+    }
 }
