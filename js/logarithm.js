@@ -13,12 +13,16 @@ var visualBox = document.getElementById("logTm");
 
 // After click = button
 function generate() {
-    if (operand.value) {
+
+    // If input field is filled
+    let operandValue = parseInt(operand.value);
+
+    if (operandValue) {
         // CLear
         logClearBox();
 
         // Jika input negatif
-        if (operand.value < 0) {
+        if (operandValue < 0) {
             addLog("Negative input!");
         } else {
             // Enable control
@@ -38,7 +42,7 @@ function generate() {
         state = 0;
 
         // Ubah log(n) ke unary
-        for (let i = 0; i < operand.value; i++) {
+        for (let i = 0; i < operandValue; i++) {
             blocks.push(new Blocklog("1"));
         }
 

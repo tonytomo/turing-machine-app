@@ -34,16 +34,25 @@
             <!-- logaritma biner -->
             <div class="form-wrapper">
                 <p class="long-input">&sup2log</p>
-                <input type="number" name="operand" id="operand" placeholder="0" />
+                <input
+                    type="text"
+                    name="operand"
+                    id="operand"
+                    maxlength="3"
+                    placeholder="0"
+                    class="long-input"
+                />
                 <button onmousedown="generate()">=</button>
                 <input readonly type="text" id="logAns" value="..." />
             </div>
 
             <!-- TM -->
-            <div class="tm-wrapper" id="logTm">
-                <!-- Tempat mesin turing -->
-                <!-- Berisi komponen persegi dengan nilai -->
-                <!-- Dibuat dengan js -->
+            <div class="tm-container">
+                <div class="tm-wrapper" id="logTm">
+                    <!-- Tempat mesin turing -->
+                    <!-- Berisi komponen persegi dengan nilai -->
+                    <!-- Dibuat dengan js -->
+                </div>
             </div>
 
             <!-- Controller -->
@@ -57,10 +66,20 @@
                 >
                     1x
                 </button>
-                <button disabled type="button" onmousedown="logPlay()" id="auto">
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="logPlay()"
+                    id="auto"
+                >
                     <i class="gg-play-button-o"></i>
                 </button>
-                <button disabled type="button" onmousedown="logHalt()" id="halt">
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="logHalt()"
+                    id="halt"
+                >
                     <i class="gg-play-stop-o"></i>
                 </button>
                 <button
@@ -71,7 +90,12 @@
                 >
                     <i class="gg-trash"></i>
                 </button>
-                <button disabled type="button" onmousedown="logNext()" id="next">
+                <button
+                    disabled
+                    type="button"
+                    onmousedown="logNext()"
+                    id="next"
+                >
                     <i class="gg-arrow-right"></i>
                 </button>
                 <input readonly type="text" title="Log" id="log" value="..." />
